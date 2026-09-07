@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         riskLevel = 'Severe Drift (Structural Overload & Misalignment)';
         riskColor = '#ef4444';
-        recommendation = 'Critical priority overload and ambiguous decision authority are exhausting key talent. A structured 4-Week Leadership Sprint is urgently recommended.';
+        recommendation = 'Critical priority overload and ambiguous decision authority are exhausting key talent. A structured Executive Alignment Rollout or Guided Workshop is urgently recommended.';
         recommendedTool = 'Decision Architecture Matrix & Complete Toolbox Bundle';
       }
 
