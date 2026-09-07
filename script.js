@@ -80,4 +80,103 @@ document.addEventListener('DOMContentLoaded', () => {
       diagnosticResult.scrollIntoView({ behavior: 'smooth' });
     });
   }
+
+  // =========================================================================
+  // Reader Portal Gating & Exclusive Unlock Logic
+  // =========================================================================
+  const portalForm = document.getElementById('reader-portal-form');
+  const lockedGate = document.getElementById('portal-locked-gate');
+  const unlockedContent = document.getElementById('portal-unlocked-content');
+  const welcomeReaderName = document.getElementById('welcome-reader-name');
+  const welcomeReaderEmail = document.getElementById('welcome-reader-email');
+  const lockPortalLink = document.getElementById('lock-portal-link');
+
+  const portalHeroTitle = document.getElementById('portal-hero-title');
+  const portalHeroSubtitle = document.getElementById('portal-hero-subtitle');
+
+  function showUnlockedPortal(name, email) {
+    if (lockedGate && unlockedContent) {
+      lockedGate.style.display = 'none';
+      unlockedContent.style.display = 'block';
+      if (welcomeReaderName && name) {
+        welcomeReaderName.textContent = name;
+      }
+      if (welcomeReaderEmail && email) {
+        welcomeReaderEmail.textContent = email;
+      }
+      if (portalHeroTitle) {
+        portalHeroTitle.textContent = 'Leadership Drift Reader Portal';
+      }
+      if (portalHeroSubtitle) {
+        portalHeroSubtitle.textContent = 'Official companion operating suite. Unlocked for verified readers with full access to all printable frameworks and implementation templates.';
+      }
+    }
+  }
+
+  function lockPortal() {
+    sessionStorage.removeItem('klp_reader_verified_name');
+    sessionStorage.removeItem('klp_reader_verified_email');
+    localStorage.removeItem('klp_reader_verified_name');
+    localStorage.removeItem('klp_reader_verified_email');
+    if (lockedGate && unlockedContent) {
+      unlockedContent.style.display = 'none';
+      lockedGate.style.display = 'block';
+      if (portalHeroTitle) {
+        portalHeroTitle.textContent = 'Already Read Leadership Drift?';
+      }
+      if (portalHeroSubtitle) {
+        portalHeroSubtitle.textContent = 'Welcome to the Reader Portal. If you have purchased or read the book, enter your details below to unlock the official companion field operating frameworks, decision matrices, and executive templates referenced in the book.';
+      }
+      lockedGate.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  if (lockPortalLink) {
+    lockPortalLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      lockPortal();
+    });
+  }
+
+  // Check if previously verified in session or storage
+  const savedReaderName = sessionStorage.getItem('klp_reader_verified_name') || localStorage.getItem('klp_reader_verified_name');
+  const savedReaderEmail = sessionStorage.getItem('klp_reader_verified_email') || localStorage.getItem('klp_reader_verified_email');
+
+  if (savedReaderName && unlockedContent) {
+    showUnlockedPortal(savedReaderName, savedReaderEmail);
+  }
+
+  if (portalForm) {
+    portalForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nameInput = document.getElementById('reader-name')?.value.trim() || 'Reader';
+      const emailInput = document.getElementById('reader-email')?.value.trim() || '';
+      const orderInput = document.getElementById('reader-order')?.value.trim();
+
+      if (!orderInput) {
+        alert('Please enter your Amazon order number, Kindle receipt, or purchase date to verify your book.');
+        return;
+      }
+
+      // Save verified session
+      sessionStorage.setItem('klp_reader_verified_name', nameInput);
+      sessionStorage.setItem('klp_reader_verified_email', emailInput);
+      localStorage.setItem('klp_reader_verified_name', nameInput);
+      localStorage.setItem('klp_reader_verified_email', emailInput);
+
+      // Reveal the unlocked portal
+      showUnlockedPortal(nameInput, emailInput);
+      unlockedContent.scrollIntoView({ behavior: 'smooth' });
+
+      // Trigger download in new tab
+      const downloadLink = document.createElement('a');
+      downloadLink.href = 'downloads/Leadership_Drift_Complete_Toolbox.pdf';
+      downloadLink.download = 'Leadership_Drift_Complete_Toolbox.pdf';
+      downloadLink.target = '_blank';
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+    });
+  }
+
 });

@@ -948,3 +948,78 @@ p {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* ==========================================================================
+   Reader Portal Gating & Exclusive Access Styles
+   ========================================================================== */
+.portal-gate-card {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: var(--radius-lg);
+  padding: 44px;
+  box-shadow: 0 20px 45px rgba(11, 19, 43, 0.08);
+}
+
+.portal-teaser-card {
+  background: #ffffff;
+  border: 1.5px dashed #cbd5e1;
+  border-radius: var(--radius-lg);
+  padding: 32px;
+}
+
+.locked-items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.locked-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #f8fafd;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 0.95rem;
+  color: #334155;
+}
+
+.locked-pill {
+  background: #e2e8f0;
+  color: #64748b;
+  font-weight: 700;
+  font-size: 0.78rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.portal-unlocked-banner {
+  background: linear-gradient(135deg, #0b132b 0%, #1c2541 100%);
+  color: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 36px 40px;
+  margin-bottom: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  flex-wrap: wrap;
+  border: 1.5px solid var(--gold-500);
+  box-shadow: 0 16px 40px rgba(11, 19, 43, 0.15);
+}
+
+@media (max-width: 640px) {
+  .portal-gate-card {
+    padding: 24px;
+  }
+  .portal-teaser-card {
+    padding: 20px;
+  }
+  .portal-unlocked-banner {
+    padding: 24px;
+  }
+}
