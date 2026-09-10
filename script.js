@@ -1,7 +1,7 @@
 // KLP Consulting Services & Leadership Drift Interactive Engine
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Mobile Navigation Toggle
+  // 1. Mobile Navigation Toggle
   const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
   const navLinks = document.querySelector('.nav-links');
 
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Interactive Drift Diagnostic Calculator
+  // 2. Interactive Drift Diagnostic Calculator
   const diagnosticForm = document.getElementById('drift-diagnostic-form');
   const diagnosticResult = document.getElementById('diagnostic-result');
 
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         riskLevel = 'Severe Drift (Structural Overload & Misalignment)';
         riskColor = '#ef4444';
-        recommendation = 'Critical priority overload and ambiguous decision authority are exhausting key talent. A structured Executive Alignment Rollout or Guided Workshop is urgently recommended.';
+        recommendation = 'Critical priority overload and ambiguous decision authority are exhausting key talent. A structured Executive Alignment Rollout or Guided Workshop with Kristen Peloquin is urgently recommended.';
         recommendedTool = 'Decision Architecture Matrix & Complete Toolbox Bundle';
       }
 
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           <div style="display: flex; gap: 12px;">
             <a href="tools.html" class="btn btn-primary btn-sm">Download Recommended Tool</a>
-            <a href="contact.html" class="btn btn-outline btn-sm">Schedule Executive Debrief</a>
+            <a href="schedule.html" class="btn btn-outline btn-sm">Schedule Executive Debrief</a>
           </div>
         </div>
       `;
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // Reader Portal Gating & Exclusive Unlock Logic
+  // 3. Reader Portal Gating & Frictionless Unlock Logic
   // =========================================================================
   const portalForm = document.getElementById('reader-portal-form');
   const lockedGate = document.getElementById('portal-locked-gate');
@@ -90,9 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const welcomeReaderName = document.getElementById('welcome-reader-name');
   const welcomeReaderEmail = document.getElementById('welcome-reader-email');
   const lockPortalLink = document.getElementById('lock-portal-link');
-
-  const portalHeroTitle = document.getElementById('portal-hero-title');
-  const portalHeroSubtitle = document.getElementById('portal-hero-subtitle');
 
   function showUnlockedPortal(name, email) {
     if (lockedGate && unlockedContent) {
@@ -104,12 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (welcomeReaderEmail && email) {
         welcomeReaderEmail.textContent = email;
       }
-      if (portalHeroTitle) {
-        portalHeroTitle.textContent = 'Leadership Drift Reader Portal';
-      }
-      if (portalHeroSubtitle) {
-        portalHeroSubtitle.textContent = 'Official companion operating suite. Unlocked for verified readers with full access to all printable frameworks and implementation templates.';
-      }
     }
   }
 
@@ -118,15 +109,10 @@ document.addEventListener('DOMContentLoaded', () => {
     sessionStorage.removeItem('klp_reader_verified_email');
     localStorage.removeItem('klp_reader_verified_name');
     localStorage.removeItem('klp_reader_verified_email');
+    localStorage.removeItem('klp_reader_unlocked');
     if (lockedGate && unlockedContent) {
       unlockedContent.style.display = 'none';
       lockedGate.style.display = 'block';
-      if (portalHeroTitle) {
-        portalHeroTitle.textContent = 'Already Read Leadership Drift?';
-      }
-      if (portalHeroSubtitle) {
-        portalHeroSubtitle.textContent = 'Welcome to the Reader Portal. If you have purchased or read the book, enter your details below to unlock the official companion field operating frameworks, decision matrices, and executive templates referenced in the book.';
-      }
       lockedGate.scrollIntoView({ behavior: 'smooth' });
     }
   }
@@ -138,12 +124,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Check if previously verified in session or storage
+  // Check if previously verified in session or local storage
   const savedReaderName = sessionStorage.getItem('klp_reader_verified_name') || localStorage.getItem('klp_reader_verified_name');
   const savedReaderEmail = sessionStorage.getItem('klp_reader_verified_email') || localStorage.getItem('klp_reader_verified_email');
+  const isUnlocked = localStorage.getItem('klp_reader_unlocked') === 'true';
 
-  if (savedReaderName && unlockedContent) {
-    showUnlockedPortal(savedReaderName, savedReaderEmail);
+  if ((savedReaderName || isUnlocked) && unlockedContent) {
+    showUnlockedPortal(savedReaderName || 'Reader', savedReaderEmail || '');
   }
 
   if (portalForm) {
@@ -151,24 +138,31 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const nameInput = document.getElementById('reader-name')?.value.trim() || 'Reader';
       const emailInput = document.getElementById('reader-email')?.value.trim() || '';
-      const orderInput = document.getElementById('reader-order')?.value.trim();
+      const confirmedCheck = document.getElementById('reader-confirmed');
 
-      if (!orderInput) {
-        alert('Please enter your Amazon order number, Kindle receipt, or purchase date to verify your book.');
+      if (confirmedCheck && !confirmedCheck.checked) {
+        alert('Please confirm that you have purchased or read Leadership Drift to access the companion tools.');
         return;
       }
 
-      // Save verified session
+      // Save unlocked state
       sessionStorage.setItem('klp_reader_verified_name', nameInput);
       sessionStorage.setItem('klp_reader_verified_email', emailInput);
       localStorage.setItem('klp_reader_verified_name', nameInput);
       localStorage.setItem('klp_reader_verified_email', emailInput);
+      localStorage.setItem('klp_reader_unlocked', 'true');
+
+      // Track conversion event
+      trackEvent('reader_portal_unlock', {
+        reader_name: nameInput,
+        reader_email: emailInput
+      });
 
       // Reveal the unlocked portal
       showUnlockedPortal(nameInput, emailInput);
       unlockedContent.scrollIntoView({ behavior: 'smooth' });
 
-      // Trigger download in new tab
+      // Automatically trigger initial download
       const downloadLink = document.createElement('a');
       downloadLink.href = 'downloads/Leadership_Drift_Complete_Toolbox.pdf';
       downloadLink.download = 'Leadership_Drift_Complete_Toolbox.pdf';
@@ -179,4 +173,63 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // =========================================================================
+  // 4. Client-Side Measurement & Event Tracking
+  // =========================================================================
+  function trackEvent(eventName, eventParams = {}) {
+    // Log to console for debugging/audit
+    console.log(`[KLP Analytics] ${eventName}:`, eventParams);
+
+    // Send to Google Analytics 4 if initialized
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', eventName, eventParams);
+    }
+  }
+
+  // Track Amazon Book Purchase Clicks
+  document.querySelectorAll('a[href*="amazon.com"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      const isKindle = href.includes('B0HHB4QQR8') || link.textContent.toLowerCase().includes('kindle');
+      const edition = isKindle ? 'kindle' : 'paperback';
+      
+      trackEvent('amazon_book_click', {
+        edition: edition,
+        target_url: href,
+        button_text: link.textContent.trim(),
+        source_page: window.location.pathname
+      });
+    });
+  });
+
+  // Track Goodreads Clicks
+  document.querySelectorAll('a[href*="goodreads.com"]').forEach((link) => {
+    link.addEventListener('click', () => {
+      trackEvent('goodreads_click', {
+        source_page: window.location.pathname,
+        button_text: link.textContent.trim()
+      });
+    });
+  });
+
+  // Track Schedule Discovery / Consultation Clicks
+  document.querySelectorAll('a[href*="schedule.html"]').forEach((link) => {
+    link.addEventListener('click', () => {
+      trackEvent('schedule_discovery_click', {
+        source_page: window.location.pathname,
+        button_text: link.textContent.trim()
+      });
+    });
+  });
+
+  // Track Tool Downloads
+  document.querySelectorAll('a[download], a[href*="downloads/"]').forEach((link) => {
+    link.addEventListener('click', () => {
+      const fileName = link.getAttribute('download') || link.getAttribute('href').split('/').pop();
+      trackEvent('reader_tool_download', {
+        file_name: fileName,
+        source_page: window.location.pathname
+      });
+    });
+  });
 });
