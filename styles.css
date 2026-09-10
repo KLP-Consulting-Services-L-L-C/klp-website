@@ -1236,3 +1236,71 @@ p {
     padding-bottom: 60px;
   }
 }
+
+/* Executive Form & Topic Styling */
+.form-group {
+  margin-bottom: 20px;
+}
+.form-label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--navy-900);
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+.form-control {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--slate-900);
+  background-color: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: var(--radius-md);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: var(--transition);
+  box-sizing: border-box;
+}
+.form-control:focus {
+  outline: none;
+  border-color: var(--navy-800);
+  box-shadow: 0 0 0 3px rgba(15, 43, 72, 0.12);
+}
+.form-control::placeholder {
+  color: #94a3b8;
+}
+textarea.form-control {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.5;
+}
+.topic-pills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.topic-pill {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: var(--slate-700);
+  padding: 7px 13px;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+.topic-pill:hover {
+  background: #e2e8f0;
+  border-color: #94a3b8;
+  color: var(--navy-900);
+}
+.topic-pill.active {
+  background: var(--navy-900);
+  border-color: var(--navy-900);
+  color: #ffffff;
+}
+
