@@ -31,6 +31,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://klpconsultingsvcs.org/diagnostic.html</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://klpconsultingsvcs.org/tools.html</loc>
     <lastmod>2026-09-09</lastmod>
     <changefreq>monthly</changefreq>

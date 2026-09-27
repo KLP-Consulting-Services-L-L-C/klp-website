@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Which System Should You Install First? | Leadership Drift</title>
+<meta name="description" content="A 2-minute diagnostic from the book Leadership Drift by Kristen Peloquin. Find out which leadership trap is quietly draining your team — and the first move to fix it.">
+<style>
+  :root{
+    --navy:#16283f; --navy2:#1f3a5c; --gold:#d9a441; --gold2:#b9862f;
+    --ink:#232a35; --muted:#5d6b7f; --line:#e3e8ef; --bg:#f6f8fb; --card:#ffffff;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.55; padding:24px 16px;}
+  .wrap{max-width:640px; margin:0 auto;}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:32px 28px; box-shadow:0 6px 24px rgba(22,40,63,.07);}
+  .kicker{font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--gold2); font-weight:700; margin-bottom:10px;}
+  h1{font-size:28px; line-height:1.25; color:var(--navy); margin-bottom:12px;}
+  h2{font-size:22px; color:var(--navy); margin-bottom:10px;}
+  p{margin-bottom:14px; color:var(--ink);}
+  .sub{color:var(--muted); font-size:16px;}
+  .btn{display:inline-block; background:var(--gold); color:#16283f; font-weight:700;
+    border:none; border-radius:10px; padding:14px 26px; font-size:16px; cursor:pointer;
+    text-decoration:none; transition:background .15s;}
+  .btn:hover{background:var(--gold2); color:#fff;}
+  .btn.ghost{background:transparent; color:var(--muted); border:1px solid var(--line); font-weight:600;}
+  .btn.ghost:hover{border-color:var(--muted); color:var(--ink); background:transparent;}
+  .center{text-align:center;}
+  .progress{height:8px; background:var(--line); border-radius:99px; margin-bottom:22px; overflow:hidden;}
+  .progress > div{height:100%; background:var(--gold); border-radius:99px; transition:width .25s;}
+  .qnum{font-size:13px; color:var(--muted); margin-bottom:6px; font-weight:600;}
+  .qtext{font-size:19px; font-weight:700; color:var(--navy); margin-bottom:18px;}
+  .ans{display:block; width:100%; text-align:left; background:var(--bg);
+    border:1px solid var(--line); border-radius:10px; padding:14px 16px;
+    font-size:15.5px; margin-bottom:10px; cursor:pointer; color:var(--ink); transition:border .12s, background .12s;}
+  .ans:hover{border-color:var(--gold); background:#fff;}
+  .tag{display:inline-block; font-size:12px; font-weight:700; letter-spacing:.1em;
+    text-transform:uppercase; color:#fff; background:var(--navy2);
+    padding:5px 12px; border-radius:99px; margin-bottom:12px;}
+  .trapills{margin:14px 0;}
+  .trapills span{display:inline-block; background:#eef3f9; color:var(--navy2);
+    font-size:13px; font-weight:600; padding:5px 12px; border-radius:99px; margin:0 6px 6px 0;}
+  .move{background:#fdf6e7; border-left:4px solid var(--gold); padding:14px 16px;
+    border-radius:0 10px 10px 0; margin:16px 0; font-size:15px;}
+  .move strong{color:var(--navy);}
+  .cta-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px;}
+  .bars{margin:16px 0;}
+  .bar-row{display:flex; align-items:center; gap:10px; margin-bottom:8px; font-size:13.5px;}
+  .bar-row .lbl{width:92px; font-weight:700; color:var(--navy); flex-shrink:0;}
+  .bar-track{flex:1; height:10px; background:var(--line); border-radius:99px; overflow:hidden;}
+  .bar-fill{height:100%; background:var(--navy2); border-radius:99px;}
+  .bar-row.top .bar-fill{background:var(--gold);}
+  .bar-row .pct{width:36px; text-align:right; color:var(--muted); flex-shrink:0;}
+  input[type=email]{width:100%; padding:13px 14px; font-size:16px; border:1px solid var(--line);
+    border-radius:10px; margin-bottom:12px;}
+  .fine{font-size:13px; color:var(--muted);}
+  .foot{margin-top:22px; text-align:center; font-size:13px; color:var(--muted);}
+  .foot a{color:var(--navy2);}
+  .hidden{display:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card" id="app"><!-- rendered by JS --></div>
+  <div class="foot">
+    From the book <em>Leadership Drift</em> by Kristen Peloquin ·
+    <a href="https://klpconsultingsvcs.org">klpconsultingsvcs.org</a>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   QUIZ DATA — each statement maps to one of four Part II systems:
+   da (Decision Architecture) · al (Accountability Loop)
+   cb (Capacity Blueprint) · roe (Rules of Engagement)
+   ============================================================ */
+const QUESTIONS = [
+  { q:"Decisions stall waiting for your input or approval.", k:"da" },
+  { q:"Feedback gets saved up instead of given in the moment.", k:"al" },
+  { q:"New work arrives without anything being paused or killed.", k:"cb" },
+  { q:"Handoffs between departments have no defined owner.", k:"roe" },
+  { q:"The same types of decisions keep escalating to you.", k:"da" },
+  { q:"1-on-1s get canceled or turn into status updates.", k:"al" },
+  { q:"You don't actually know how much capacity your team has.", k:"cb" },
+  { q:"Two teams are measured on metrics that pull in opposite directions.", k:"roe" },
+  { q:"Your team can't say what they're allowed to decide on their own.", k:"da" },
+  { q:"A known behavior issue goes unaddressed.", k:"al" },
+  { q:"Your best people are rewarded with more work.", k:"cb" },
+  { q:"Peer leaders resolve disputes by escalating to you.", k:"roe" }
+];
+
+const RESULTS = {
+  da:{ name:"The Decision Architecture",
+    tagline:"Your team doesn't need more of you. It needs less of you \u2014 by design.",
+    desc:"Every decision routes through a person instead of a rule. You're the bottleneck, the tiebreaker, and the escalation path \u2014 and the team has learned that waiting for you beats deciding without you.",
+    traps:["Decision boundaries","Escalation rules","The refuse-the-rescue rule"],
+    cost:"Learned helplessness, stalled decisions, and you as the single point of failure.",
+    move:"Publish one decision boundary this week: three things your frontline can decide without you. Then refuse the next rescue.",
+    chapters:"Part II \u00b7 System One" },
+  al:{ name:"The Accountability Loop",
+    tagline:"Your culture isn't broken. It's just never been told the truth.",
+    desc:"Feedback gets saved up, 1-on-1s get canceled, and known behavior issues go unaddressed. Every delay feels kinder in the moment \u2014 and compounds like debt.",
+    traps:["Uncancelable weekly 1-on-1s","Written feedback log","Behavioral standards"],
+    cost:"Surprise terminations, festering conflict, and standards that quietly become optional.",
+    move:"Reinstate weekly 1-on-1s that can be rescheduled but never canceled. Start a written feedback log this week.",
+    chapters:"Part II \u00b7 System Two" },
+  cb:{ name:"The Capacity Blueprint",
+    tagline:"Your team isn't lazy. It's buried.",
+    desc:"New work arrives without anything being paused or killed. Nobody knows actual capacity, and your most reliable people are rewarded with more work.",
+    traps:["Capacity mapping","Priority Kill Switch","Reliability Tax guardrails"],
+    cost:"Quiet quitting from your best people, rework, and motion confused with progress.",
+    move:"Run the Priority Kill Switch: for the next initiative added, one of equal weight gets explicitly paused or killed.",
+    chapters:"Part II \u00b7 System Three" },
+  roe:{ name:"The Rules of Engagement",
+    tagline:"Your departments are winning. Your company is losing.",
+    desc:"Handoffs between teams have no defined owner, metrics conflict across departments, and peer disputes get escalated to you instead of resolved at the seam.",
+    traps:["Shared cross-team KPIs","One-page internal SLAs","Handoff ownership"],
+    cost:"Dropped handoffs, duplicated work, and customers caught between departments.",
+    move:"Give your two most frictional departments one shared KPI they win or lose together. Write their internal SLA on a single page.",
+    chapters:"Part II \u00b7 System Four" }
+};
+const ORDER = ["da","al","cb","roe"];
+const LABELS = {da:"Decisions", al:"Accountability", cb:"Capacity", roe:"Engagement"};
+
+// LEAD CAPTURE (Web3Forms -> kristen@klpconsultingsvcs.org)
+const WEB3FORMS_ACCESS_KEY = "ee876766-2b71-4ab8-888b-6cb3f57d469d";
+
+let state = { step:0, scores:{da:0, al:0, cb:0, roe:0}, email:"" };
+const app = document.getElementById("app");
+
+function renderStart(){
+  app.innerHTML =
+    '<div class="kicker">Leadership Drift · 2-minute diagnostic</div>'+
+    '<h1>Which system should you install first?</h1>'+
+    '<p class="sub">Leadership drift rarely announces itself as failure. Your team doesn\'t need another initiative. It needs an operating system. Rate 12 statements — how often each happens on your team — and find out which of the four Leadership Drift systems to install first, plus the first move to install it.</p>'+
+    '<p class="sub">Based on <em>Leadership Drift</em> by Kristen Peloquin.</p>'+
+    '<div class="center" style="margin-top:8px;"><button class="btn" onclick="renderQ()">Start the diagnostic</button></div>';
+}
+
+function renderQ(){
+  const i = state.step, total = QUESTIONS.length;
+  if(i >= total){ renderGate(); return; }
+  const Q = QUESTIONS[i];
+  let html = '<div class="progress"><div style="width:'+Math.round(i/total*100)+'%"></div></div>'+
+    '<div class="qnum">Statement '+(i+1)+' of '+total+'</div>'+
+    '<div class="qtext">'+Q.q+'</div>'+
+    '<div class="fine" style="margin-bottom:14px;">How often does this happen on your team?</div>';
+  var SCALE = [["Always",3],["Often",2],["Sometimes",1],["Rarely",0]];
+  SCALE.forEach(function(s2){
+    html += '<button class="ans" onclick="answer(\''+Q.k+'\','+s2[1]+')">'+s2[0]+'</button>';
+  });
+  app.innerHTML = html;
+  window.scrollTo(0,0);
+}
+function answer(key,val){ state.scores[key]+=val; state.step++; renderQ(); }
+
+function topKey(){
+  let best = ORDER[0];
+  ORDER.forEach(function(k){ if(state.scores[k] > state.scores[best]) best = k; });
+  return best;
+}
+
+function renderGate(){
+  /* EMAIL GATE — connect this form to your email provider (ConvertKit,
+     Mailchimp, etc.) or your site's form handler to capture leads.
+     The result renders either way; the email is optional. */
+  app.innerHTML =
+    '<div class="progress"><div style="width:100%"></div></div>'+
+    '<div class="kicker">Almost there</div>'+
+    '<h2>Get your full system report</h2>'+
+    '<p class="sub">Enter your email and we\'ll send your result plus the free operating frameworks from the book — the Decision Architecture Matrix, the Priority Kill Switch, the 48-Hour Feedback Log, and the Seam Handoff Standard.</p>'+
+    '<input type="email" id="email" placeholder="you@company.com">'+
+    '<div class="cta-row"><button class="btn" onclick="submitEmail()">Send my report</button>'+
+    '<button class="btn ghost" onclick="renderResult()">Skip — just show my result</button></div>'+
+    '<p class="fine" style="margin-top:12px;">No spam. Unsubscribe anytime.</p>';
+}
+function submitEmail(){
+  const v = (document.getElementById("email").value || "").trim();
+  if(v && v.indexOf("@") < 0){ alert("Please enter a valid email address."); return; }
+  state.email = v;
+  if(v) {
+    try {
+      localStorage.setItem("klp_quiz_lead_email", v);
+      localStorage.setItem("klp_quiz_last_submission", JSON.stringify({
+        quiz: document.title,
+        date: new Date().toISOString(),
+        email: v,
+        scores: state.scores
+      }));
+    } catch(e) {}
+
+    if (typeof WEB3FORMS_ACCESS_KEY !== "undefined" && WEB3FORMS_ACCESS_KEY && WEB3FORMS_ACCESS_KEY !== "ee876766-2b71-4ab8-888b-6cb3f57d469d") {
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: "New Quiz Lead: " + (document.title || "Which System Should You Install First?"),
+          from_name: "Leadership Drift Quiz",
+          email: v,
+          quiz_name: document.title || "Which System Should You Install First?",
+          scores_breakdown: JSON.stringify(state.scores),
+          submitted_at: new Date().toLocaleString()
+        })
+      }).catch(function(e) {});
+    }
+  }
+  renderResult();
+}
+
+function renderResult(){
+  const key = topKey(), R = RESULTS[key], total = QUESTIONS.length;
+  let bars = "";
+  ORDER.forEach(function(k){
+    const pct = Math.round(state.scores[k]/9*100);
+    bars += '<div class="bar-row'+(k===key?' top':'')+'"><div class="lbl">'+LABELS[k]+
+      '</div><div class="bar-track"><div class="bar-fill" style="width:'+pct+'%"></div></div>'+
+      '<div class="pct">'+pct+'%</div></div>';
+  });
+  let pills = "";
+  R.traps.forEach(function(t){ pills += "<span>"+t+"</span>"; });
+  app.innerHTML =
+    '<div class="tag">'+R.chapters+' · '+R.name+'</div>'+
+    '<h1>'+R.tagline+'</h1>'+
+    '<p>'+R.desc+'</p>'+
+    '<div class="fine" style="margin:10px 0 4px">This system installs:</div><div class="trapills">'+pills+'</div>'+
+    '<p><strong>Without it:</strong> '+R.cost+'</p>'+
+    '<div class="move"><strong>Install it this week:</strong> '+R.move+'</div>'+
+    '<div class="kicker" style="margin-top:18px;">Your full breakdown</div>'+
+    '<div class="bars">'+bars+'</div>'+
+    '<div class="cta-row">'+
+      '<a class="btn" href="https://klpconsultingsvcs.org/tools.html">Get the free frameworks</a>'+
+      '<a class="btn ghost" href="https://klpconsultingsvcs.org">Bring this to your team</a>'+
+    '</div>'+
+    '<p class="fine" style="margin-top:14px;">Want to fix this across your whole leadership team? '+
+    '<a href="https://klpconsultingsvcs.org">Ask about the Enterprise Edition</a> — the 4-week playbook sprint, guided sessions, and implementation support.</p>'+
+    '<div class="center" style="margin-top:10px;"><button class="btn ghost" onclick="reset()">Retake</button></div>';
+  window.scrollTo(0,0);
+}
+function reset(){ state = { step:0, scores:{da:0, al:0, cb:0, roe:0}, email:"" }; renderStart(); }
+
+renderStart();
+</script>
+</body>
+</html>

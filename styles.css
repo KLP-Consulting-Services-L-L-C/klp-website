@@ -1304,3 +1304,39 @@ textarea.form-control {
   color: #ffffff;
 }
 
+
+/* ==========================================================================
+   Header Social Emblems
+   ========================================================================== */
+.nav-social-icons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 2px;
+}
+
+.nav-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.nav-social-link:hover {
+  background: var(--gold-500);
+  color: var(--navy-950);
+  border-color: var(--gold-400);
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 12px rgba(197, 155, 39, 0.28);
+}
+
+.nav-social-link svg {
+  display: block;
+}

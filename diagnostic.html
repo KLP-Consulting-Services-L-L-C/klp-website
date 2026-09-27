@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Executive Drift Diagnostic | What&rsquo;s Your Drift Risk Score? | Leadership Drift</title>
+  <meta name="description" content="Take the 2-minute executive diagnostic based on Leadership Drift by Kristen Peloquin. Calculate your team's Drift Risk Score (0–100), identify your biggest operational leak, and get your immediate First Move.">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="canonical" href="https://klpconsultingsvcs.org/diagnostic.html">
+  <meta property="og:title" content="Executive Drift Diagnostic | Leadership Drift">
+  <meta property="og:description" content="Calculate your team's Drift Risk Score (0–100) and pinpoint your highest-friction operational leak in 2 minutes.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://klpconsultingsvcs.org/diagnostic.html">
+
+  <style>
+    /* Specific styles for the interactive diagnostic */
+    .diagnostic-wrapper {
+      max-width: 800px;
+      margin: -40px auto 80px auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .diagnostic-card {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-lg);
+      padding: 40px 36px;
+      box-shadow: 0 20px 45px -10px rgba(11, 19, 43, 0.12), 0 10px 20px -5px rgba(11, 19, 43, 0.06);
+    }
+
+    @media (max-width: 640px) {
+      .diagnostic-card {
+        padding: 26px 20px;
+      }
+      .diagnostic-wrapper {
+        margin-top: -20px;
+      }
+    }
+
+    .diag-kicker {
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-500);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .diag-progress-bar {
+      height: 8px;
+      background: var(--slate-100);
+      border-radius: var(--radius-full);
+      margin-bottom: 24px;
+      overflow: hidden;
+      border: 1px solid var(--slate-200);
+    }
+
+    .diag-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold-400), var(--gold-500));
+      border-radius: var(--radius-full);
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .diag-step-counter {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--slate-600);
+      margin-bottom: 12px;
+    }
+
+    .diag-zone-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      background: var(--navy-100);
+      color: var(--navy-800);
+    }
+
+    .diag-question-text {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--navy-900);
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .diag-question-prompt {
+      font-size: 0.95rem;
+      color: var(--slate-600);
+      margin-bottom: 22px;
+    }
+
+    .diag-options-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .diag-opt-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      text-align: left;
+      background: var(--navy-50);
+      border: 1.5px solid var(--slate-200);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--navy-900);
+      cursor: pointer;
+      transition: all 0.18s ease;
+      font-family: inherit;
+    }
+
+    .diag-opt-btn:hover {
+      border-color: var(--gold-400);
+      background: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(11, 19, 43, 0.06);
+    }
+
+    .diag-opt-btn:active {
+      transform: translateY(0);
+    }
+
+    .diag-opt-sub {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--slate-600);
+    }
+
+    .score-circle-wrapper {
+      text-align: center;
+      margin: 10px 0 24px 0;
+    }
+
+    .score-display-number {
+      font-size: clamp(3.5rem, 8vw, 5.2rem);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--navy-950);
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .score-display-number span {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--slate-400);
+    }
+
+    .risk-badge {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 6px 18px;
+      border-radius: var(--radius-full);
+      margin-top: 8px;
+    }
+
+    .risk-low { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+    .risk-early { background: #fef9c3; color: #854d0e; border: 1px solid #fef08a; }
+    .risk-deep { background: #ffedd5; color: #c2410c; border: 1px solid #fed7aa; }
+    .risk-critical { background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
+
+    .first-move-box {
+      background: #fdfaf2;
+      border-left: 4px solid var(--gold-500);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 20px 22px;
+      margin: 24px 0;
+      border-top: 1px solid #f9edd0;
+      border-right: 1px solid #f9edd0;
+      border-bottom: 1px solid #f9edd0;
+    }
+
+    .first-move-box strong {
+      display: block;
+      color: var(--navy-900);
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .first-move-box p {
+      color: var(--slate-700);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    .trap-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 18px 0;
+    }
+
+    .trap-pill {
+      background: var(--navy-100);
+      color: var(--navy-800);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--slate-200);
+    }
+
+    .breakdown-table {
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .breakdown-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.9rem;
+    }
+
+    .breakdown-label {
+      width: 140px;
+      font-weight: 700;
+      color: var(--navy-900);
+      flex-shrink: 0;
+    }
+
+    .breakdown-track {
+      flex: 1;
+      height: 10px;
+      background: var(--slate-100);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      border: 1px solid var(--slate-200);
+    }
+
+    .breakdown-fill {
+      height: 100%;
+      background: var(--navy-700);
+      border-radius: var(--radius-full);
+      transition: width 0.6s ease;
+    }
+
+    .breakdown-row.top-leak .breakdown-fill {
+      background: var(--gold-500);
+    }
+
+    .breakdown-pct {
+      width: 44px;
+      text-align: right;
+      font-weight: 700;
+      color: var(--slate-600);
+      flex-shrink: 0;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 24px 0 32px 0;
+    }
+
+    @media (max-width: 600px) {
+      .intro-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .intro-item {
+      background: var(--navy-50);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-md);
+      padding: 16px;
+    }
+
+    .intro-item h4 {
+      font-size: 0.95rem;
+      color: var(--navy-900);
+      margin-bottom: 4px;
+    }
+
+    .intro-item p {
+      font-size: 0.85rem;
+      color: var(--slate-600);
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+
+    .cta-button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .diag-nav-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--slate-100);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <span class="brand-title">KLP Consulting Services</span>
+        <span class="brand-subtitle">Clarity &bull; Confidence &bull; Strategy</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="the-book.html" class="nav-link">Leadership Drift</a></li>
+        <li><a href="enterprise.html" class="nav-link">Team &amp; Enterprise</a></li>
+        <li><a href="diagnostic.html" class="nav-link active">Diagnostic</a></li>
+        <li><a href="tools.html" class="nav-link">Reader Portal</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div class="nav-social-icons">
+          <a href="https://www.linkedin.com/in/kristen-peloquin" target="_blank" rel="noopener" aria-label="Kristen Peloquin on LinkedIn" class="nav-social-link" title="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.6 1.6 0 0 0-1.6 1.6 1.6 1.6 0 0 0 1.6 1.6 1.6 1.6 0 0 0 1.6-1.6 1.6 1.6 0 0 0-1.6-1.6Z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61594678983797" target="_blank" rel="noopener" aria-label="KLP Consulting Services on Facebook" class="nav-social-link" title="Facebook Page">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+          </a>
+        </div>
+        <a href="schedule.html" class="btn btn-primary btn-sm">Schedule a Call</a>
+        <button class="mobile-menu-btn" aria-label="Toggle navigation">&#9776;</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-dark">
+    <div class="container text-center" style="max-width: 860px; margin: 0 auto; padding-bottom: 60px;">
+      <div class="badge badge-dark-gold" style="margin-bottom: 14px;">
+        <span>INTERACTIVE EXECUTIVE DIAGNOSTIC &bull; 2-MINUTE AUDIT</span>
+      </div>
+      <h1 style="color: #ffffff; margin-bottom: 14px; font-size: clamp(2.1rem, 4vw, 3.2rem); font-family: 'Space Grotesk', sans-serif;">
+        What&rsquo;s Your Team&rsquo;s Drift Risk Score?
+      </h1>
+      <p style="font-size: 1.15rem; color: #cbd5e1; line-height: 1.65; margin-bottom: 0;">
+        Leadership drift rarely announces itself as failure. It creeps in when systems fail to keep pace with growth. Rate 12 friction indicators to calculate your <strong>0&ndash;100 Risk Score</strong>, pinpoint your primary system leak, and receive your immediate First Move.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Diagnostic App Container -->
+  <main class="diagnostic-wrapper">
+    <div class="diagnostic-card" id="diagnostic-app">
+      <!-- Dynamic View Managed by JS -->
+    </div>
+  </main>
+
+  <!-- Grounding Section: The 4 Operating Systems -->
+  <section class="section section-alt" style="padding-top: 20px;">
+    <div class="container" style="max-width: 900px;">
+      <div class="text-center" style="margin-bottom: 40px;">
+        <div class="badge badge-gold" style="margin-bottom: 12px;">Methodology</div>
+        <h2 style="color: var(--navy-900); font-size: 1.9rem; margin-bottom: 12px;">
+          The Architecture of Organizational Drift
+        </h2>
+        <p style="color: var(--slate-600); max-width: 680px; margin: 0 auto; font-size: 1.05rem;">
+          Based on the diagnostic frameworks in <em>Leadership Drift</em> by Kristen Peloquin, operational breakdown occurs across four predictable seams:
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+        <div class="card" style="padding: 24px; border: 1px solid var(--slate-200); border-radius: var(--radius-md);">
+          <div style="color: var(--gold-500); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 6px;">System One</div>
+          <h3 style="font-size: 1.15rem; color: var(--navy-900); margin-bottom: 8px;">Decision Architecture</h3>
+          <p style="font-size: 0.9rem; color: var(--slate-600); line-height: 1.55; margin-bottom: 0;">
+            Eliminating consensus paralysis, live rescues, and bottlenecked calendars through the <em>Rule of the Single &lsquo;A&rsquo;</em>.
+          </p>
+        </div>
+
+        <div class="card" style="padding: 24px; border: 1px solid var(--slate-200); border-radius: var(--radius-md);">
+          <div style="color: var(--gold-500); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 6px;">System Two</div>
+          <h3 style="font-size: 1.15rem; color: var(--navy-900); margin-bottom: 8px;">Accountability Loop</h3>
+          <p style="font-size: 0.9rem; color: var(--slate-600); line-height: 1.55; margin-bottom: 0;">
+            Decoupling performance feedback from interpersonal conflict using uncancelable 1-on-1s and the <em>48-Hour Feedback Log</em>.
+          </p>
+        </div>
+
+        <div class="card" style="padding: 24px; border: 1px solid var(--slate-200); border-radius: var(--radius-md);">
+          <div style="color: var(--gold-500); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 6px;">System Three</div>
+          <h3 style="font-size: 1.15rem; color: var(--navy-900); margin-bottom: 8px;">Capacity Blueprint</h3>
+          <p style="font-size: 0.9rem; color: var(--slate-600); line-height: 1.55; margin-bottom: 0;">
+            Protecting high performers and halting hidden burnout with the strict <em>Priority Kill Switch (1-in, 1-out)</em>.
+          </p>
+        </div>
+
+        <div class="card" style="padding: 24px; border: 1px solid var(--slate-200); border-radius: var(--radius-md);">
+          <div style="color: var(--gold-500); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 6px;">System Four</div>
+          <h3 style="font-size: 1.15rem; color: var(--navy-900); margin-bottom: 8px;">Rules of Engagement</h3>
+          <p style="font-size: 0.9rem; color: var(--slate-600); line-height: 1.55; margin-bottom: 0;">
+            Resolving interdepartmental friction, turf disputes, and dropped handoffs through standardized <em>Seam Handoff Standards</em>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-title">KLP Consulting Services</div>
+          <div class="brand-subtitle">Strategic Leadership &bull; Operating Systems</div>
+          <p>
+            Direct, founder-led advisory, executive coaching, and practical operating frameworks to build clarity, accountability, and sustainable velocity.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Leadership Drift</h4>
+          <ul class="footer-links">
+            <li><a href="the-book.html">Book Overview &amp; Excerpt</a></li>
+            <li><a href="diagnostic.html">Executive Drift Diagnostic</a></li>
+            <li><a href="enterprise.html">Team &amp; Enterprise Resources</a></li>
+            <li><a href="tools.html">Reader Portal</a></li>
+            <li><a href="https://www.amazon.com/dp/B0HJ97QKZ3?maas=maas_adg_DF527B15C7198128F4DE2EFD978EE9AB_afap_abs&amp;ref_=aa_maas&amp;tag=maas" target="_blank">Order on Amazon</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Advisory</h4>
+          <ul class="footer-links">
+            <li><a href="services.html#coaching">Executive Coaching</a></li>
+            <li><a href="services.html#workshops">Operating Alignment Sessions</a></li>
+            <li><a href="services.html#audits">Operational Diagnostics</a></li>
+            <li><a href="schedule.html">Schedule Discovery Call</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:kristen.peloquin@klpconsultingsvcs.org">kristen.peloquin@klpconsultingsvcs.org</a></li>
+            <li><a href="https://www.linkedin.com/in/kristen-peloquin" target="_blank">LinkedIn Profile</a></li>
+            <li><a href="https://www.facebook.com/profile.php?id=61594678983797" target="_blank" rel="noopener">Facebook Page</a></li>
+            <li><a href="about.html">About Kristen Peloquin</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 KLP Consulting Services, L.L.C. All Rights Reserved. &bull; <a href="privacy.html" style="color: #cbd5e1; text-decoration: underline;">Privacy Policy</a> &bull; <a href="terms.html" style="color: #cbd5e1; text-decoration: underline;">Terms of Use</a></div>
+        <div style="color: #94a3b8;">Leadership Drift &bull; Enterprise Facilitator Suite</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Diagnostic Script Engine -->
+  <script>
+  (function(){
+    // The 12 Diagnostic Questions mapping to the 4 Systems & Archetypes
+    const QUESTIONS = [
+      {
+        q: "Decisions stall when you or specific key leaders are unavailable or stuck in back-to-back meetings.",
+        k: "rescuer",
+        zone: "Decisions & Authority",
+        system: "Decision Architecture"
+      },
+      {
+        q: "A difficult conversation or critical feedback gets postponed to &ldquo;a better time.&rdquo;",
+        k: "avoider",
+        zone: "Culture & Feedback",
+        system: "Accountability Loop"
+      },
+      {
+        q: "A new &ldquo;top priority&rdquo; appears without anything of equal weight being explicitly paused or killed.",
+        k: "overloader",
+        zone: "Capacity & Workload",
+        system: "Capacity Blueprint"
+      },
+      {
+        q: "Customers experience the friction seams between your departments (dropped handoffs, finger-pointing).",
+        k: "silo",
+        zone: "Cross-Functional Seams",
+        system: "Rules of Engagement"
+      },
+      {
+        q: "Problems get solved faster by escalating to leadership than by trusting the frontline process.",
+        k: "rescuer",
+        zone: "Decisions & Authority",
+        system: "Decision Architecture"
+      },
+      {
+        q: "A known performance or behavior issue has been discussed for months without formal action.",
+        k: "avoider",
+        zone: "Culture & Feedback",
+        system: "Accountability Loop"
+      },
+      {
+        q: "Your strongest, most reliable performers get rewarded with more work while others skate by.",
+        k: "overloader",
+        zone: "Capacity & Workload",
+        system: "Capacity Blueprint"
+      },
+      {
+        q: "A decision gets quietly reopened, second-guessed, or renegotiated after it was already agreed upon.",
+        k: "silo",
+        zone: "Cross-Functional Seams",
+        system: "Rules of Engagement"
+      },
+      {
+        q: "You fix urgent problems personally because it feels faster than training or explaining the standard.",
+        k: "rescuer",
+        zone: "Decisions & Authority",
+        system: "Decision Architecture"
+      },
+      {
+        q: "Weekly 1-on-1s frequently get canceled, rescheduled, or turn into rushed tactical status updates.",
+        k: "avoider",
+        zone: "Culture & Feedback",
+        system: "Accountability Loop"
+      },
+      {
+        q: "Status dashboards and project reports show &ldquo;green&rdquo; while the team works late nights or weekends to deliver.",
+        k: "overloader",
+        zone: "Capacity & Workload",
+        system: "Capacity Blueprint"
+      },
+      {
+        q: "Peer department heads resolve disputes by lobbying executive leadership rather than working it out directly.",
+        k: "silo",
+        zone: "Cross-Functional Seams",
+        system: "Rules of Engagement"
+      }
+    ];
+
+    const SCORING = [
+      { text: "Always", sub: "Chronic pattern &bull; High friction", pts: 3 },
+      { text: "Often", sub: "Frequent occurrence &bull; Persistent issue", pts: 2 },
+      { text: "Sometimes", sub: "Occasional occurrence &bull; Emerging risk", pts: 1 },
+      { text: "Rarely / Never", sub: "Controlled &bull; High operational discipline", pts: 0 }
+    ];
+
+    const ARCHETYPES = {
+      rescuer: {
+        name: "The Rescuer",
+        systemName: "Decision Architecture",
+        tagline: "Your team doesn&rsquo;t have an execution problem. It has a bottleneck problem.",
+        desc: "Decisions route through key individuals instead of clear operating boundaries. Rescues feel productive in the moment, but the team has learned that waiting for you is safer than deciding independently.",
+        traps: ["Charisma Dependency Cycle", "Leadership Bottleneck", "Hero Fa&ccedil;ade"],
+        cost: "Learned helplessness, stalled velocity whenever key leaders travel, and burnout at the top.",
+        move: "Install the Decision Architecture. This week, publish one clear decision boundary: three specific operational calls the frontline must execute without you. Then refuse the next rescue.",
+        chapters: "Chapters 1&ndash;5 &bull; Part II: System One",
+        tool: "Decision Architecture Matrix"
+      },
+      avoider: {
+        name: "The Avoider",
+        systemName: "Accountability Loop",
+        tagline: "Your culture isn&rsquo;t broken. It has just accumulated avoidance debt.",
+        desc: "Hard conversations get delayed in the name of kindness, 1-on-1s get canceled, and performance compromises compound silently. Every delay feels polite today, but produces surprise exits tomorrow.",
+        traps: ["Avoidance Debt Trap", "Illusion of Kindness", "Tolerance Trade Trap", "Triangulation Trap"],
+        cost: "Unclear standards, festering peer conflict, and top performers demoralized by tolerated mediocrity.",
+        move: "Install the Accountability Loop. Reinstate non-negotiable weekly 1-on-1s (rescheduled, never canceled) and introduce a written 48-Hour Feedback Log after tough discussions.",
+        chapters: "Chapters 6&ndash;9 &bull; Part II: System Two",
+        tool: "48-Hour Feedback Log & Contract"
+      },
+      overloader: {
+        name: "The Overloader",
+        systemName: "Capacity Blueprint",
+        tagline: "Your team isn&rsquo;t underperforming. It&rsquo;s buried under priority creep.",
+        desc: "Everything is declared urgent, the dashboard looks green, and capacity is treated as infinite. The most reliable people absorb the tax until exhaustion or quiet quitting takes hold.",
+        traps: ["Ambiguity Burnout Trap", "Reliability Tax Trap", "Green Dashboard Trap", "Capacity Mirage"],
+        cost: "Attrition of your best problem solvers, hidden rework, and mistaking urgent activity for strategic progress.",
+        move: "Install the Capacity Blueprint. Enforce the Priority Kill Switch: for every new corporate initiative launched, one existing initiative of equal weight must be explicitly paused or killed.",
+        chapters: "Chapters 10&ndash;14 &bull; Part II: System Three",
+        tool: "Priority Kill Switch Template"
+      },
+      silo: {
+        name: "The Silo Builder",
+        systemName: "Rules of Engagement",
+        tagline: "Your departments are winning their metrics. Your company is losing the customer.",
+        desc: "Functional units optimize for their own scorecard while the handoffs between them remain undefined. Peers lobby upwards instead of resolving disputes at the seam.",
+        traps: ["Turf War", "Protecting the Silo", "Re-Org Void Trap", "Pressure Hiring Trap"],
+        cost: "Dropped customer handoffs, duplicated overhead, and friction between departmental leaders.",
+        move: "Install the Rules of Engagement. Align your two most frictional departments under one shared KPI they win or lose together, and document their internal SLA on a single sheet.",
+        chapters: "Chapters 15&ndash;19 &bull; Part II: System Four",
+        tool: "Seam Handoff Standard"
+      }
+    };
+
+    const BANDS = [
+      { max: 25, badgeClass: "risk-low", tag: "Low Drift Risk", name: "Anchored Alignment",
+        desc: "Operational discipline is intact. Decisions move with velocity, feedback is candid, capacity is respected, and handoffs hold. Your focus now is proactive maintenance: run quarterly seam audits and guard against complacency." },
+      { max: 50, badgeClass: "risk-early", tag: "Early Warning", name: "Emerging Drift",
+        desc: "The operation still delivers, but internal warning lights are flashing. Friction is beginning to concentrate in one or two seams. This is the most cost-effective window to install systems before it costs you key people." },
+      { max: 75, badgeClass: "risk-deep", tag: "High Friction", name: "Deep Structural Drift",
+        desc: "This is a systemic pattern, not a temporary rough patch. Overloaded teams are avoiding hard conversations, and siloed functions are escalating everything back to leadership. You need operating frameworks, not more effort." },
+      { max: 100, badgeClass: "risk-critical", tag: "Severe Exposure", name: "Critical Heroics Drift",
+        desc: "The operation is currently held together by individual heroics rather than repeatable systems. Key leaders are single points of failure, burnout is imminent, and the customer is experiencing the internal seams." }
+    ];
+
+    const ORDER = ["rescuer", "avoider", "overloader", "silo"];
+    const LABELS = {
+      rescuer: "Decisions (Rescue Risk)",
+      avoider: "Accountability (Avoidance Risk)",
+      overloader: "Capacity (Overload Risk)",
+      silo: "Seams (Silo Friction)"
+    };
+
+    // ========================================================
+    // LEAD CAPTURE CONFIGURATION (Web3Forms -> kristen@klpconsultingsvcs.org)
+    // Replace ee876766-2b71-4ab8-888b-6cb3f57d469d with your Web3Forms Access Key from https://web3forms.com
+    // ========================================================
+    const WEB3FORMS_ACCESS_KEY = "ee876766-2b71-4ab8-888b-6cb3f57d469d";
+
+    let state = {
+      step: 0,
+      answers: [],
+      scores: { rescuer: 0, avoider: 0, overloader: 0, silo: 0 },
+      email: "",
+      name: ""
+    };
+
+    const app = document.getElementById("diagnostic-app");
+
+    function renderStart() {
+      app.innerHTML = `
+        <div class="diag-kicker">Executive Diagnostic &bull; 12 Questions</div>
+        <h2 style="font-size: 1.85rem; color: var(--navy-900); margin-bottom: 12px; font-family: 'Space Grotesk', sans-serif;">
+          Diagnose Your Team&rsquo;s Operational Health
+        </h2>
+        <p style="color: var(--slate-700); font-size: 1.05rem; line-height: 1.6; margin-bottom: 20px;">
+          This 2-minute clinical diagnostic measures the subtle friction patterns that slow organizational velocity. Rate how frequently each operational statement occurs on your team to generate your benchmarked report.
+        </p>
+
+        <div class="intro-grid">
+          <div class="intro-item">
+            <h4>1. Quantifiable Risk Score</h4>
+            <p>A benchmarked 0&ndash;100 score classifying your drift level from Anchored to Critical.</p>
+          </div>
+          <div class="intro-item">
+            <h4>2. Dominant System Leak</h4>
+            <p>Pinpoints which of the 4 core operating zones is bleeding the most velocity.</p>
+          </div>
+          <div class="intro-item">
+            <h4>3. Leadership Trap Archetype</h4>
+            <p>Identifies your team&rsquo;s default operating trap from the book <em>Leadership Drift</em>.</p>
+          </div>
+          <div class="intro-item">
+            <h4>4. Immediate First Move</h4>
+            <p>A concrete, non-theoretical protocol you can implement with your team this week.</p>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 8px;">
+          <button class="btn btn-primary btn-lg" style="box-shadow: 0 4px 18px rgba(197, 155, 39, 0.35); font-size: 1.1rem; padding: 16px 36px;" onclick="window.startDiagnostic()">
+            Start the 2-Minute Diagnostic &rarr;
+          </button>
+        </div>
+      `;
+    }
+
+    window.startDiagnostic = function() {
+      state.step = 0;
+      state.answers = [];
+      state.scores = { rescuer: 0, avoider: 0, overloader: 0, silo: 0 };
+      renderQuestion();
+    };
+
+    function renderQuestion() {
+      const idx = state.step;
+      const total = QUESTIONS.length;
+
+      if (idx >= total) {
+        renderGate();
+        return;
+      }
+
+      const q = QUESTIONS[idx];
+      const progressPct = Math.round((idx / total) * 100);
+
+      let optionsHtml = '';
+      SCORING.forEach((opt, optIndex) => {
+        optionsHtml += `
+          <button class="diag-opt-btn" onclick="window.chooseAnswer('${q.k}', ${opt.pts})">
+            <div>
+              <div style="font-size: 1.05rem; margin-bottom: 2px;">${opt.text}</div>
+              <div class="diag-opt-sub">${opt.sub}</div>
+            </div>
+            <span style="color: var(--gold-500); font-size: 1.25rem;">&rarr;</span>
+          </button>
+        `;
+      });
+
+      app.innerHTML = `
+        <div class="diag-step-counter">
+          <span>Statement ${idx + 1} of ${total}</span>
+          <span class="diag-zone-badge">${q.zone}</span>
+        </div>
+
+        <div class="diag-progress-bar">
+          <div class="diag-progress-fill" style="width: ${progressPct}%;"></div>
+        </div>
+
+        <div class="diag-question-text">${q.q}</div>
+        <div class="diag-question-prompt">How frequently does this pattern occur across your team or organization?</div>
+
+        <div class="diag-options-grid">
+          ${optionsHtml}
+        </div>
+
+        <div class="diag-nav-row">
+          ${idx > 0 ? `<button class="btn btn-outline btn-sm" onclick="window.previousQuestion()">&larr; Back</button>` : `<span></span>`}
+          <span style="font-size: 0.8rem; color: var(--slate-400);">Confidential Assessment</span>
+        </div>
+      `;
+
+      app.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    window.chooseAnswer = function(key, pts) {
+      state.scores[key] += pts;
+      state.answers.push({ key: key, pts: pts });
+      state.step++;
+      renderQuestion();
+    };
+
+    window.previousQuestion = function() {
+      if (state.step > 0) {
+        state.step--;
+        const last = state.answers.pop();
+        if (last) {
+          state.scores[last.key] -= last.pts;
+        }
+        renderQuestion();
+      }
+    };
+
+    function topKey() {
+      let best = ORDER[0];
+      ORDER.forEach(k => {
+        if (state.scores[k] > state.scores[best]) {
+          best = k;
+        }
+      });
+      return best;
+    }
+
+    function renderGate() {
+      app.innerHTML = `
+        <div class="diag-progress-bar">
+          <div class="diag-progress-fill" style="width: 100%;"></div>
+        </div>
+        <div class="badge badge-gold" style="margin-bottom: 12px;">Diagnostic Complete</div>
+        <h2 style="font-size: 1.85rem; color: var(--navy-900); margin-bottom: 10px; font-family: 'Space Grotesk', sans-serif;">
+          Your Drift Report Is Ready
+        </h2>
+        <p style="color: var(--slate-700); font-size: 1.05rem; line-height: 1.6; margin-bottom: 24px;">
+          Enter your details below to save your official Drift Risk Score and receive the companion operating tools referenced in <em>Leadership Drift</em>.
+        </p>
+
+        <div style="background: var(--navy-50); border: 1px solid var(--slate-200); border-radius: var(--radius-md); padding: 22px; margin-bottom: 24px;">
+          <div style="margin-bottom: 16px;">
+            <label style="display: block; font-size: 0.88rem; font-weight: 700; color: var(--navy-900); margin-bottom: 6px;">Your Name</label>
+            <input type="text" id="diag-name" class="form-control" placeholder="e.g. Kristen Peloquin" style="width: 100%; padding: 12px 14px; border: 1px solid var(--slate-200); border-radius: var(--radius-sm); font-size: 1rem;">
+          </div>
+          <div>
+            <label style="display: block; font-size: 0.88rem; font-weight: 700; color: var(--navy-900); margin-bottom: 6px;">Work Email Address</label>
+            <input type="email" id="diag-email" class="form-control" placeholder="you@company.com" style="width: 100%; padding: 12px 14px; border: 1px solid var(--slate-200); border-radius: var(--radius-sm); font-size: 1rem;">
+          </div>
+        </div>
+
+        <div class="cta-button-group">
+          <button class="btn btn-primary btn-lg" style="box-shadow: 0 4px 18px rgba(197, 155, 39, 0.35);" onclick="window.submitGate()">
+            Reveal My Official Results &rarr;
+          </button>
+          <button class="btn btn-outline btn-lg" onclick="window.renderResults()">
+            Skip &bull; Just View Result
+          </button>
+        </div>
+
+        <p style="font-size: 0.82rem; color: var(--slate-400); margin-top: 18px;">
+          Your information is held in strict professional confidence. No spam. Unsubscribe anytime.
+        </p>
+      `;
+
+      app.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    window.submitGate = function() {
+      const nameVal = (document.getElementById("diag-name")?.value || "").trim();
+      const emailVal = (document.getElementById("diag-email")?.value || "").trim();
+
+      if (emailVal && emailVal.indexOf("@") < 1) {
+        alert("Please enter a valid email address to receive your report.");
+        return;
+      }
+
+      state.name = nameVal;
+      state.email = emailVal;
+
+      if (emailVal) {
+        const S = state.scores;
+        const rawTotal = S.rescuer + S.avoider + S.overloader + S.silo;
+        const score = Math.round((rawTotal / 36) * 100);
+        const leakKey = topKey();
+        const A = ARCHETYPES[leakKey];
+
+        let band = BANDS[3];
+        for (let i = 0; i < BANDS.length; i++) {
+          if (score <= BANDS[i].max) {
+            band = BANDS[i];
+            break;
+          }
+        }
+
+        // Save lead securely to local storage as fallback
+        try {
+          localStorage.setItem("klp_diagnostic_lead_email", emailVal);
+          localStorage.setItem("klp_diagnostic_lead_name", nameVal);
+          localStorage.setItem("klp_diagnostic_last_score", JSON.stringify({
+            date: new Date().toISOString(),
+            scores: state.scores,
+            email: emailVal,
+            name: nameVal,
+            score: score,
+            band: band.name,
+            archetype: A.title
+          }));
+        } catch(e) {}
+
+        // Send instant lead email notification via Web3Forms endpoint
+        if (typeof WEB3FORMS_ACCESS_KEY !== "undefined" && WEB3FORMS_ACCESS_KEY && WEB3FORMS_ACCESS_KEY !== "ee876766-2b71-4ab8-888b-6cb3f57d469d") {
+          fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: JSON.stringify({
+              access_key: WEB3FORMS_ACCESS_KEY,
+              subject: `New Drift Risk Lead: ${nameVal || 'Leader'} scored ${score}/100 (${A.title})`,
+              from_name: "Leadership Drift Diagnostic",
+              name: nameVal || "Anonymous Leader",
+              email: emailVal,
+              drift_risk_score: `${score}/100 - ${band.name} (${band.tag})`,
+              primary_friction_archetype: A.title,
+              estimated_operational_drag: A.cost,
+              recommended_first_move: A.move,
+              relevant_framework: A.framework,
+              book_chapters: A.chapters,
+              score_breakdown: `Rescue: ${S.rescuer}/9 | Avoidance: ${S.avoider}/9 | Overload: ${S.overloader}/9 | Silo: ${S.silo}/9`,
+              submitted_at: new Date().toLocaleString()
+            })
+          }).catch(function(err) {
+            console.warn("Lead email notification failed:", err);
+          });
+        }
+
+        // Fire analytics tracking event
+        if (typeof window.trackEvent === 'function') {
+          window.trackEvent('diagnostic_lead_captured', {
+            email: emailVal,
+            name: nameVal,
+            score: score,
+            archetype: A.title
+          });
+        }
+      }
+
+      window.renderResults();
+    };
+
+    window.renderResults = function() {
+      const S = state.scores;
+      const rawTotal = S.rescuer + S.avoider + S.overloader + S.silo;
+      // 12 questions * max 3 = 36 max raw points
+      const score = Math.round((rawTotal / 36) * 100);
+      const leakKey = topKey();
+      const A = ARCHETYPES[leakKey];
+
+      let band = BANDS[3];
+      for (let i = 0; i < BANDS.length; i++) {
+        if (score <= BANDS[i].max) {
+          band = BANDS[i];
+          break;
+        }
+      }
+
+      // Track diagnostic completion
+      if (typeof window.trackEvent === 'function') {
+        window.trackEvent('diagnostic_completed', {
+          score: score,
+          band: band.name,
+          leak_system: A.systemName,
+          email: state.email
+        });
+      }
+
+      // Render breakdown rows
+      let breakdownHtml = "";
+      ORDER.forEach(k => {
+        const pct = Math.round((S[k] / 9) * 100);
+        const isTop = (k === leakKey);
+        breakdownHtml += `
+          <div class="breakdown-row ${isTop ? 'top-leak' : ''}">
+            <div class="breakdown-label">${LABELS[k]}</div>
+            <div class="breakdown-track">
+              <div class="breakdown-fill" style="width: ${pct}%;"></div>
+            </div>
+            <div class="breakdown-pct">${pct}%</div>
+          </div>
+        `;
+      });
+
+      // Render pills
+      let pillsHtml = "";
+      A.traps.forEach(trap => {
+        pillsHtml += `<span class="trap-pill">${trap}</span>`;
+      });
+
+      app.innerHTML = `
+        <div class="score-circle-wrapper">
+          <div class="score-display-number">${score}<span>/100</span></div>
+          <div><span class="risk-badge ${band.badgeClass}">${band.tag} &bull; ${band.name}</span></div>
+        </div>
+
+        <div style="border-top: 1px solid var(--slate-200); padding-top: 24px; margin-top: 12px;">
+          <h3 style="font-size: 1.5rem; color: var(--navy-900); margin-bottom: 8px; font-family: 'Space Grotesk', sans-serif;">
+            Diagnosis: ${band.name}
+          </h3>
+          <p style="color: var(--slate-700); font-size: 1.05rem; line-height: 1.6; margin-bottom: 24px;">
+            ${band.desc}
+          </p>
+
+          <div style="background: var(--navy-50); border: 1.5px solid var(--slate-200); border-radius: var(--radius-md); padding: 24px; margin-bottom: 24px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-500);">Primary Friction Seam</span>
+              <span style="font-size: 0.8rem; font-weight: 600; color: var(--slate-400);">${A.chapters}</span>
+            </div>
+            <h4 style="font-size: 1.3rem; color: var(--navy-900); margin-bottom: 4px;">
+              ${A.name} &bull; ${A.systemName}
+            </h4>
+            <p style="font-style: italic; color: var(--slate-600); margin-bottom: 12px; font-size: 0.95rem;">
+              &ldquo;${A.tagline}&rdquo;
+            </p>
+            <p style="color: var(--slate-700); font-size: 0.95rem; line-height: 1.6; margin-bottom: 14px;">
+              ${A.desc}
+            </p>
+            
+            <div style="font-size: 0.85rem; font-weight: 700; color: var(--navy-900); margin-bottom: 6px;">Identified Book Traps:</div>
+            <div class="trap-pills">${pillsHtml}</div>
+
+            <p style="font-size: 0.9rem; color: var(--slate-700); margin-bottom: 0;">
+              <strong>Organizational Cost:</strong> ${A.cost}
+            </p>
+          </div>
+
+          <div class="first-move-box">
+            <strong>Your Recommended First Move:</strong>
+            <p>${A.move}</p>
+          </div>
+
+          <div style="margin: 28px 0;">
+            <h4 style="font-size: 1.15rem; color: var(--navy-900); margin-bottom: 14px;">
+              Where Your Operational Friction Concentrates:
+            </h4>
+            <div class="breakdown-table">
+              ${breakdownHtml}
+            </div>
+          </div>
+
+          <div style="background: var(--navy-900); color: #ffffff; border-radius: var(--radius-md); padding: 26px; margin: 30px 0;">
+            <h4 style="color: #ffffff; font-size: 1.25rem; margin-bottom: 8px; font-family: 'Space Grotesk', sans-serif;">
+              Install the ${A.systemName} on Your Team
+            </h4>
+            <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+              Kristen Peloquin leads executive coaching and private operational alignment workshops to systematically resolve friction, install decision rights, and eliminate leadership drift.
+            </p>
+            <div class="cta-button-group" style="margin-top: 0;">
+              <a href="tools.html" class="btn btn-primary btn-sm">
+                Get the ${A.tool} in Portal &rarr;
+              </a>
+              <a href="schedule.html" class="btn btn-outline btn-sm" style="color: #ffffff; border-color: rgba(255,255,255,0.4);">
+                Schedule Discovery Call with Kristen
+              </a>
+              <a href="enterprise.html" class="btn btn-outline btn-sm" style="color: #ffffff; border-color: rgba(255,255,255,0.4);">
+                Enterprise Playbook Sprint
+              </a>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-top: 20px;">
+            <button class="btn btn-outline btn-sm" onclick="window.startDiagnostic()">
+              &circlearrowleft; Retake Assessment
+            </button>
+          </div>
+        </div>
+      `;
+
+      app.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    // Initialize Diagnostic
+    renderStart();
+  })();
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
