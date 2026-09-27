@@ -364,9 +364,10 @@ p {
 }
 
 .badge-gold {
-  background: rgba(197, 155, 39, 0.16);
-  color: #9a7312;
-  border: 1px solid rgba(197, 155, 39, 0.4);
+  background: rgba(197, 155, 39, 0.14);
+  color: #78350f;
+  border: 1px solid rgba(197, 155, 39, 0.45);
+  font-weight: 700;
 }
 
 .badge-navy {
