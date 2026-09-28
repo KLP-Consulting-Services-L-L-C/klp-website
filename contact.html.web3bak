@@ -10,14 +10,6 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Top Drift Diagnostic Notification Bar -->
-  <div class="site-announcement-bar">
-    <div class="container announcement-container">
-      <span class="announcement-pill">Free Audit</span>
-      <span class="announcement-text">Where does operational drag concentrate on your team?</span>
-      <a href="diagnostic.html" class="announcement-link">Take the 2-Minute Drift Diagnostic &rarr;</a>
-    </div>
-  </div>
 
   <!-- Navigation -->
   <header class="navbar">
@@ -204,7 +196,7 @@
           <h4>Leadership Drift</h4>
           <ul class="footer-links">
             <li><a href="the-book.html">Book Overview &amp; Excerpt</a></li>
-            <li><a href="diagnostic.html">Drift Diagnostic</a></li>
+            <li><a href="diagnostic.html">Executive Drift Diagnostic</a></li>
             <li><a href="the-book.html#who-should-read">Who Should Read</a></li>
             <li><a href="enterprise.html">Team &amp; Enterprise Resources</a></li>
             <li><a href="tools.html">Reader Portal</a></li>
@@ -282,7 +274,7 @@
         const topic = select.value || 'Advisory Inquiry';
         const message = msg ? msg.value : '';
 
-        if (typeof WEB3FORMS_ACCESS_KEY !== "undefined" && WEB3FORMS_ACCESS_KEY) {
+        if (typeof WEB3FORMS_ACCESS_KEY !== "undefined" && WEB3FORMS_ACCESS_KEY && WEB3FORMS_ACCESS_KEY !== "ee876766-2b71-4ab8-888b-6cb3f57d469d") {
           e.preventDefault();
           const submitBtn = form.querySelector('button[type="submit"]');
           if (submitBtn) {

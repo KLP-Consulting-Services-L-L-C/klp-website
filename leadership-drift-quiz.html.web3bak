@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Which System Should You Install First? | Leadership Drift</title>
-<meta name="description" content="A 2-minute diagnostic from the book Leadership Drift by Kristen Peloquin. Find out which leadership trap is quietly draining your team  -  and the first move to fix it.">
+<title>Which Drift Trap Is Your Team In? | Leadership Drift</title>
+<meta name="description" content="A 2-minute diagnostic from the book Leadership Drift by Kristen Peloquin. Find out which leadership trap is quietly draining your team — and the first move to fix it.">
 <style>
   :root{
     --navy:#16283f; --navy2:#1f3a5c; --gold:#d9a441; --gold2:#b9862f;
@@ -73,69 +73,69 @@
 
 <script>
 /* ============================================================
-   QUIZ DATA  -  each statement maps to one of four Part II systems:
-   da (Decision Architecture) · al (Accountability Loop)
-   cb (Capacity Blueprint) · roe (Rules of Engagement)
+   QUIZ DATA — each answer maps to one of four drift archetypes:
+   rescuer (Ego & Identity, Ch 1-5) · avoider (Avoidance & Culture, Ch 6-9)
+   overloader (Execution & Capacity, Ch 10-14) · silo (Seams, Ch 15-19)
    ============================================================ */
 const QUESTIONS = [
-  { q:"Decisions stall waiting for your input or approval.", k:"da" },
-  { q:"Feedback gets saved up instead of given in the moment.", k:"al" },
-  { q:"New work arrives without anything being paused or killed.", k:"cb" },
-  { q:"Handoffs between departments have no defined owner.", k:"roe" },
-  { q:"The same types of decisions keep escalating to you.", k:"da" },
-  { q:"1-on-1s get canceled or turn into status updates.", k:"al" },
-  { q:"You don't actually know how much capacity your team has.", k:"cb" },
-  { q:"Two teams are measured on metrics that pull in opposite directions.", k:"roe" },
-  { q:"Your team can't say what they're allowed to decide on their own.", k:"da" },
-  { q:"A known behavior issue goes unaddressed.", k:"al" },
-  { q:"Your best people are rewarded with more work.", k:"cb" },
-  { q:"Peer leaders resolve disputes by escalating to you.", k:"roe" }
+  { q:"Decisions stall when you're unavailable or stuck in back-to-back meetings.", k:"rescuer" },
+  { q:"A difficult conversation gets postponed to “a better time.”", k:"avoider" },
+  { q:"A new “top priority” appears without anything being paused or killed.", k:"overloader" },
+  { q:"Two departments blame each other for a dropped handoff.", k:"silo" },
+  { q:"Someone brings you a problem they could have solved with a clear rule.", k:"rescuer" },
+  { q:"Someone is surprised by feedback in a performance review.", k:"avoider" },
+  { q:"Your strongest performer gets more work as a reward for delivering.", k:"overloader" },
+  { q:"A decision gets reopened after it was already made.", k:"silo" },
+  { q:"You fix an urgent issue personally because it's faster than explaining it.", k:"rescuer" },
+  { q:"A known behavior issue goes unaddressed because the person delivers results.", k:"avoider" },
+  { q:"Spreadsheets show capacity, but the frontline drowns in untracked shadow work and manual workarounds.", k:"overloader" },
+  { q:"An open role gets filled in a rush because the team is drowning.", k:"silo" }
 ];
 
 const RESULTS = {
-  da:{ name:"The Decision Architecture",
-    tagline:"Your team doesn't need more of you. It needs less of you \u2014 by design.",
-    desc:"Every decision routes through a person instead of a rule. You're the bottleneck, the tiebreaker, and the escalation path \u2014 and the team has learned that waiting for you beats deciding without you.",
-    traps:["Decision boundaries","Escalation rules","The refuse-the-rescue rule"],
-    cost:"Learned helplessness, stalled decisions, and you as the single point of failure.",
-    move:"Publish one decision boundary this week: three things your frontline can decide without you. Then refuse the next rescue.",
-    chapters:"Part II \u00b7 System One" },
-  al:{ name:"The Accountability Loop",
+  rescuer:{ name:"The Rescuer",
+    tagline:"Your team doesn't have an execution problem. It has a you problem.",
+    desc:"You're the charismatic center of the operation. Decisions flow through you, live rescues feel good, and the team has learned that waiting for you is smarter than deciding without you. It worked — until the organization outgrew your calendar.",
+    traps:["Charisma Dependency Cycle","Leadership Bottleneck","Hero Façade"],
+    cost:"Learned helplessness, stalled decisions whenever you're unavailable, and you as the single point of failure.",
+    move:"Install a Decision Architecture. This week, publish one decision boundary in plain language: what the frontline can decide without you, and what must be escalated. Then refuse the next rescue.",
+    chapters:"Chapters 1–5" },
+  avoider:{ name:"The Avoider",
     tagline:"Your culture isn't broken. It's just never been told the truth.",
-    desc:"Feedback gets saved up, 1-on-1s get canceled, and known behavior issues go unaddressed. Every delay feels kinder in the moment \u2014 and compounds like debt.",
-    traps:["Uncancelable weekly 1-on-1s","Written feedback log","Behavioral standards"],
+    desc:"Hard conversations keep getting postponed — the feedback, the tolerance of mediocrity, the conflict between peers. Every delay feels kinder in the moment. Every delay compounds like debt.",
+    traps:["Avoidance Debt Trap","Illusion of Kindness","Tolerance Trade Trap","Triangulation Trap"],
     cost:"Surprise terminations, festering conflict, and standards that quietly become optional.",
-    move:"Reinstate weekly 1-on-1s that can be rescheduled but never canceled. Start a written feedback log this week.",
-    chapters:"Part II \u00b7 System Two" },
-  cb:{ name:"The Capacity Blueprint",
+    move:"Install the Accountability Loop. Reinstate weekly 1-on-1s that can be rescheduled but never canceled, and start a written feedback log — one email after every hard conversation.",
+    chapters:"Chapters 6–9" },
+  overloader:{ name:"The Overloader",
     tagline:"Your team isn't lazy. It's buried.",
-    desc:"New work arrives without anything being paused or killed. Nobody knows actual capacity, and your most reliable people are rewarded with more work.",
-    traps:["Capacity mapping","Priority Kill Switch","Reliability Tax guardrails"],
-    cost:"Quiet quitting from your best people, rework, and motion confused with progress.",
-    move:"Run the Priority Kill Switch: for the next initiative added, one of equal weight gets explicitly paused or killed.",
-    chapters:"Part II \u00b7 System Three" },
-  roe:{ name:"The Rules of Engagement",
+    desc:"Everything is priority one, the dashboard is green while the team drowns in workarounds, and your most reliable people are rewarded with more work. Burnout here isn't a hours problem — it's a design problem.",
+    traps:["Ambiguity Burnout Trap","Reliability Tax Trap","Green Dashboard Trap","Capacity Mirage"],
+    cost:"Quiet quitting from your best people, rework, and a team that confuses motion with progress.",
+    move:"Install the Capacity Blueprint. Use the Priority Kill Switch: for every new initiative added, one of equal weight gets explicitly paused or killed. No ties allowed.",
+    chapters:"Chapters 10–14" },
+  silo:{ name:"The Silo Builder",
     tagline:"Your departments are winning. Your company is losing.",
-    desc:"Handoffs between teams have no defined owner, metrics conflict across departments, and peer disputes get escalated to you instead of resolved at the seam.",
-    traps:["Shared cross-team KPIs","One-page internal SLAs","Handoff ownership"],
-    cost:"Dropped handoffs, duplicated work, and customers caught between departments.",
-    move:"Give your two most frictional departments one shared KPI they win or lose together. Write their internal SLA on a single page.",
-    chapters:"Part II \u00b7 System Four" }
+    desc:"Each function optimizes for its own scorecard while the handoffs between them — where the customer actually lives — go undefined. Turf gets defended, peers fail separately, and open roles get filled in panic.",
+    traps:["Turf War","Protecting Your Silo","Re-Org Void Trap","Pressure Hiring Trap"],
+    cost:"Dropped handoffs, duplicated work, and customers caught in the gap between departments.",
+    move:"Install the Rules of Engagement. Give your two most frictional departments one shared KPI they win or lose together, and write their internal SLA on a single page.",
+    chapters:"Chapters 15–19" }
 };
-const ORDER = ["da","al","cb","roe"];
-const LABELS = {da:"Decisions", al:"Accountability", cb:"Capacity", roe:"Engagement"};
+const ORDER = ["rescuer","avoider","overloader","silo"];
+const LABELS = {rescuer:"Rescuer", avoider:"Avoider", overloader:"Overloader", silo:"Silo Builder"};
 
 // LEAD CAPTURE (Web3Forms -> kristen@klpconsultingsvcs.org)
 const WEB3FORMS_ACCESS_KEY = "ee876766-2b71-4ab8-888b-6cb3f57d469d";
 
-let state = { step:0, scores:{da:0, al:0, cb:0, roe:0}, email:"" };
+let state = { step:0, scores:{rescuer:0, avoider:0, overloader:0, silo:0}, email:"" };
 const app = document.getElementById("app");
 
 function renderStart(){
   app.innerHTML =
     '<div class="kicker">Leadership Drift · 2-minute diagnostic</div>'+
-    '<h1>Which system should you install first?</h1>'+
-    '<p class="sub">Leadership drift rarely announces itself as failure. Your team doesn\'t need another initiative. It needs an operating system. Rate 12 statements  -  how often each happens on your team  -  and find out which of the four Leadership Drift systems to install first, plus the first move to install it.</p>'+
+    '<h1>Which drift trap is your team in?</h1>'+
+    '<p class="sub">Leadership drift rarely announces itself as failure. Rate 12 statements about how work actually moves on your team — how often each one happens — and find out which trap from the book is quietly draining you — plus the first move to fix it.</p>'+
     '<p class="sub">Based on <em>Leadership Drift</em> by Kristen Peloquin.</p>'+
     '<div class="center" style="margin-top:8px;"><button class="btn" onclick="renderQ()">Start the diagnostic</button></div>';
 }
@@ -164,17 +164,17 @@ function topKey(){
 }
 
 function renderGate(){
-  /* EMAIL GATE  -  connect this form to your email provider (ConvertKit,
+  /* EMAIL GATE — connect this form to your email provider (ConvertKit,
      Mailchimp, etc.) or your site's form handler to capture leads.
      The result renders either way; the email is optional. */
   app.innerHTML =
     '<div class="progress"><div style="width:100%"></div></div>'+
     '<div class="kicker">Almost there</div>'+
-    '<h2>Get your full system report</h2>'+
-    '<p class="sub">Enter your email and we\'ll send your result plus the free operating frameworks from the book  -  the Decision Architecture Matrix, the Priority Kill Switch, the 48-Hour Feedback Log, and the Seam Handoff Standard.</p>'+
+    '<h2>Get your full trap report</h2>'+
+    '<p class="sub">Enter your email and we\'ll send your result plus the free operating frameworks from the book — the Decision Architecture Matrix, the Priority Kill Switch, the 48-Hour Feedback Log, and the Seam Handoff Standard.</p>'+
     '<input type="email" id="email" placeholder="you@company.com">'+
     '<div class="cta-row"><button class="btn" onclick="submitEmail()">Send my report</button>'+
-    '<button class="btn ghost" onclick="renderResult()">Skip  -  just show my result</button></div>'+
+    '<button class="btn ghost" onclick="renderResult()">Skip — just show my result</button></div>'+
     '<p class="fine" style="margin-top:12px;">No spam. Unsubscribe anytime.</p>';
 }
 function submitEmail(){
@@ -192,16 +192,16 @@ function submitEmail(){
       }));
     } catch(e) {}
 
-    if (typeof WEB3FORMS_ACCESS_KEY !== "undefined" && WEB3FORMS_ACCESS_KEY) {
+    if (typeof WEB3FORMS_ACCESS_KEY !== "undefined" && WEB3FORMS_ACCESS_KEY && WEB3FORMS_ACCESS_KEY !== "ee876766-2b71-4ab8-888b-6cb3f57d469d") {
       fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
         body: JSON.stringify({
           access_key: WEB3FORMS_ACCESS_KEY,
-          subject: "New Quiz Lead: " + (document.title || "Which System Should You Install First?"),
+          subject: "New Quiz Lead: " + (document.title || "Which Drift Trap Is Your Team In?"),
           from_name: "Leadership Drift Quiz",
           email: v,
-          quiz_name: document.title || "Which System Should You Install First?",
+          quiz_name: document.title || "Which Drift Trap Is Your Team In?",
           scores_breakdown: JSON.stringify(state.scores),
           submitted_at: new Date().toLocaleString()
         })
@@ -226,21 +226,21 @@ function renderResult(){
     '<div class="tag">'+R.chapters+' · '+R.name+'</div>'+
     '<h1>'+R.tagline+'</h1>'+
     '<p>'+R.desc+'</p>'+
-    '<div class="fine" style="margin:10px 0 4px">This system installs:</div><div class="trapills">'+pills+'</div>'+
-    '<p><strong>Without it:</strong> '+R.cost+'</p>'+
-    '<div class="move"><strong>Install it this week:</strong> '+R.move+'</div>'+
+    '<div class="trapills">'+pills+'</div>'+
+    '<p><strong>What it\'s costing you:</strong> '+R.cost+'</p>'+
+    '<div class="move"><strong>Your first move:</strong> '+R.move+'</div>'+
     '<div class="kicker" style="margin-top:18px;">Your full breakdown</div>'+
     '<div class="bars">'+bars+'</div>'+
     '<div class="cta-row">'+
       '<a class="btn" href="https://klpconsultingsvcs.org/tools.html">Get the free frameworks</a>'+
-      '<a class="btn ghost" href="https://klpconsultingsvcs.org">Bring this to your team</a>'+
+      '<a class="btn ghost" href="https://klpconsultingsvcs.org">Get the book</a>'+
     '</div>'+
     '<p class="fine" style="margin-top:14px;">Want to fix this across your whole leadership team? '+
-    '<a href="https://klpconsultingsvcs.org">Ask about the Enterprise Edition</a>  -  the 4-week playbook sprint, guided sessions, and implementation support.</p>'+
+    '<a href="https://klpconsultingsvcs.org">Ask about the Enterprise Edition</a> — the 4-week playbook sprint, guided sessions, and implementation support.</p>'+
     '<div class="center" style="margin-top:10px;"><button class="btn ghost" onclick="reset()">Retake</button></div>';
   window.scrollTo(0,0);
 }
-function reset(){ state = { step:0, scores:{da:0, al:0, cb:0, roe:0}, email:"" }; renderStart(); }
+function reset(){ state = { step:0, scores:{rescuer:0, avoider:0, overloader:0, silo:0}, email:"" }; renderStart(); }
 
 renderStart();
 </script>

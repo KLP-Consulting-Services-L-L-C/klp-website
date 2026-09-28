@@ -1341,3 +1341,81 @@ textarea.form-control {
 .nav-social-link svg {
   display: block;
 }
+
+
+/* Top Drift Diagnostic Announcement Bar */
+.site-announcement-bar {
+  background: #080e1e;
+  border-bottom: 1px solid rgba(197, 155, 39, 0.35);
+  color: #ffffff;
+  position: relative;
+  z-index: 100;
+  width: 100%;
+}
+.site-announcement-bar .container.announcement-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  padding: 8px 16px;
+  text-align: center;
+  flex-wrap: wrap;
+}
+.announcement-pill {
+  background: rgba(197, 155, 39, 0.18);
+  color: #f59e0b;
+  border: 1px solid rgba(197, 155, 39, 0.45);
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 2px 8px;
+  border-radius: 99px;
+  white-space: nowrap;
+}
+.announcement-text {
+  color: #cbd5e1;
+}
+.announcement-link {
+  color: var(--gold-400);
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+.announcement-link:hover {
+  text-decoration: underline;
+  color: #fbbf24;
+}
+
+/* Diagnostic Spotlight Bar (Homepage & Book Page) */
+.diagnostic-spotlight-bar {
+  background: linear-gradient(135deg, #0b132b 0%, #162544 100%);
+  padding: 22px 0;
+  border-bottom: 2px solid var(--gold-400);
+  color: #ffffff;
+}
+.diagnostic-spotlight-bar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.diagnostic-bridge-card {
+  background: var(--navy-50);
+  border: 1.5px solid var(--gold-400);
+  border-radius: var(--radius-md);
+  padding: 24px 26px;
+  margin: 28px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
+  box-shadow: 0 4px 16px rgba(11, 19, 43, 0.05);
+}

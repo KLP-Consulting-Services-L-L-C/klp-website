@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Which Drift Trap Is Your Team In? | Leadership Drift</title>
-<meta name="description" content="A 2-minute diagnostic from the book Leadership Drift by Kristen Peloquin. Find out which leadership trap is quietly draining your team — and the first move to fix it.">
+<meta name="description" content="A 2-minute diagnostic from the book Leadership Drift by Kristen Peloquin. Find out which leadership trap is quietly draining your team  -  and the first move to fix it.">
 <style>
   :root{
     --navy:#16283f; --navy2:#1f3a5c; --gold:#d9a441; --gold2:#b9862f;
@@ -73,7 +73,7 @@
 
 <script>
 /* ============================================================
-   QUIZ DATA — each answer maps to one of four drift archetypes:
+   QUIZ DATA  -  each answer maps to one of four drift archetypes:
    rescuer (Ego & Identity, Ch 1-5) · avoider (Avoidance & Culture, Ch 6-9)
    overloader (Execution & Capacity, Ch 10-14) · silo (Seams, Ch 15-19)
    ============================================================ */
@@ -88,35 +88,35 @@ const QUESTIONS = [
   { q:"A decision gets reopened after it was already made.", k:"silo" },
   { q:"You fix an urgent issue personally because it's faster than explaining it.", k:"rescuer" },
   { q:"A known behavior issue goes unaddressed because the person delivers results.", k:"avoider" },
-  { q:"Status reports look healthy while the team works nights or weekends.", k:"overloader" },
+  { q:"Spreadsheets show capacity, but the frontline drowns in untracked shadow work and manual workarounds.", k:"overloader" },
   { q:"An open role gets filled in a rush because the team is drowning.", k:"silo" }
 ];
 
 const RESULTS = {
   rescuer:{ name:"The Rescuer",
     tagline:"Your team doesn't have an execution problem. It has a you problem.",
-    desc:"You're the charismatic center of the operation. Decisions flow through you, live rescues feel good, and the team has learned that waiting for you is smarter than deciding without you. It worked — until the organization outgrew your calendar.",
+    desc:"You're the charismatic center of the operation. Decisions flow through you, live rescues feel good, and the team has learned that waiting for you is smarter than deciding without you. It worked  -  until the organization outgrew your calendar.",
     traps:["Charisma Dependency Cycle","Leadership Bottleneck","Hero Façade"],
     cost:"Learned helplessness, stalled decisions whenever you're unavailable, and you as the single point of failure.",
     move:"Install a Decision Architecture. This week, publish one decision boundary in plain language: what the frontline can decide without you, and what must be escalated. Then refuse the next rescue.",
     chapters:"Chapters 1–5" },
   avoider:{ name:"The Avoider",
     tagline:"Your culture isn't broken. It's just never been told the truth.",
-    desc:"Hard conversations keep getting postponed — the feedback, the tolerance of mediocrity, the conflict between peers. Every delay feels kinder in the moment. Every delay compounds like debt.",
+    desc:"Hard conversations keep getting postponed  -  the feedback, the tolerance of mediocrity, the conflict between peers. Every delay feels kinder in the moment. Every delay compounds like debt.",
     traps:["Avoidance Debt Trap","Illusion of Kindness","Tolerance Trade Trap","Triangulation Trap"],
     cost:"Surprise terminations, festering conflict, and standards that quietly become optional.",
-    move:"Install the Accountability Loop. Reinstate weekly 1-on-1s that can be rescheduled but never canceled, and start a written feedback log — one email after every hard conversation.",
+    move:"Install the Accountability Loop. Reinstate weekly 1-on-1s that can be rescheduled but never canceled, and start a written feedback log  -  one email after every hard conversation.",
     chapters:"Chapters 6–9" },
   overloader:{ name:"The Overloader",
     tagline:"Your team isn't lazy. It's buried.",
-    desc:"Everything is priority one, the dashboard is green while the team drowns in workarounds, and your most reliable people are rewarded with more work. Burnout here isn't a hours problem — it's a design problem.",
+    desc:"Everything is priority one, the dashboard is green while the team drowns in workarounds, and your most reliable people are rewarded with more work. Burnout here isn't a hours problem  -  it's a design problem.",
     traps:["Ambiguity Burnout Trap","Reliability Tax Trap","Green Dashboard Trap","Capacity Mirage"],
     cost:"Quiet quitting from your best people, rework, and a team that confuses motion with progress.",
     move:"Install the Capacity Blueprint. Use the Priority Kill Switch: for every new initiative added, one of equal weight gets explicitly paused or killed. No ties allowed.",
     chapters:"Chapters 10–14" },
   silo:{ name:"The Silo Builder",
     tagline:"Your departments are winning. Your company is losing.",
-    desc:"Each function optimizes for its own scorecard while the handoffs between them — where the customer actually lives — go undefined. Turf gets defended, peers fail separately, and open roles get filled in panic.",
+    desc:"Each function optimizes for its own scorecard while the handoffs between them  -  where the customer actually lives  -  go undefined. Turf gets defended, peers fail separately, and open roles get filled in panic.",
     traps:["Turf War","Protecting Your Silo","Re-Org Void Trap","Pressure Hiring Trap"],
     cost:"Dropped handoffs, duplicated work, and customers caught in the gap between departments.",
     move:"Install the Rules of Engagement. Give your two most frictional departments one shared KPI they win or lose together, and write their internal SLA on a single page.",
@@ -135,7 +135,7 @@ function renderStart(){
   app.innerHTML =
     '<div class="kicker">Leadership Drift · 2-minute diagnostic</div>'+
     '<h1>Which drift trap is your team in?</h1>'+
-    '<p class="sub">Leadership drift rarely announces itself as failure. Rate 12 statements about how work actually moves on your team — how often each one happens — and find out which trap from the book is quietly draining you — plus the first move to fix it.</p>'+
+    '<p class="sub">Leadership drift rarely announces itself as failure. Rate 12 statements about how work actually moves on your team  -  how often each one happens  -  and find out which trap from the book is quietly draining you  -  plus the first move to fix it.</p>'+
     '<p class="sub">Based on <em>Leadership Drift</em> by Kristen Peloquin.</p>'+
     '<div class="center" style="margin-top:8px;"><button class="btn" onclick="renderQ()">Start the diagnostic</button></div>';
 }
@@ -164,17 +164,17 @@ function topKey(){
 }
 
 function renderGate(){
-  /* EMAIL GATE — connect this form to your email provider (ConvertKit,
+  /* EMAIL GATE  -  connect this form to your email provider (ConvertKit,
      Mailchimp, etc.) or your site's form handler to capture leads.
      The result renders either way; the email is optional. */
   app.innerHTML =
     '<div class="progress"><div style="width:100%"></div></div>'+
     '<div class="kicker">Almost there</div>'+
     '<h2>Get your full trap report</h2>'+
-    '<p class="sub">Enter your email and we\'ll send your result plus the free operating frameworks from the book — the Decision Architecture Matrix, the Priority Kill Switch, the 48-Hour Feedback Log, and the Seam Handoff Standard.</p>'+
+    '<p class="sub">Enter your email and we\'ll send your result plus the free operating frameworks from the book  -  the Decision Architecture Matrix, the Priority Kill Switch, the 48-Hour Feedback Log, and the Seam Handoff Standard.</p>'+
     '<input type="email" id="email" placeholder="you@company.com">'+
     '<div class="cta-row"><button class="btn" onclick="submitEmail()">Send my report</button>'+
-    '<button class="btn ghost" onclick="renderResult()">Skip — just show my result</button></div>'+
+    '<button class="btn ghost" onclick="renderResult()">Skip  -  just show my result</button></div>'+
     '<p class="fine" style="margin-top:12px;">No spam. Unsubscribe anytime.</p>';
 }
 function submitEmail(){
@@ -192,7 +192,7 @@ function submitEmail(){
       }));
     } catch(e) {}
 
-    if (typeof WEB3FORMS_ACCESS_KEY !== "undefined" && WEB3FORMS_ACCESS_KEY && WEB3FORMS_ACCESS_KEY !== "ee876766-2b71-4ab8-888b-6cb3f57d469d") {
+    if (typeof WEB3FORMS_ACCESS_KEY !== "undefined" && WEB3FORMS_ACCESS_KEY) {
       fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
@@ -236,7 +236,7 @@ function renderResult(){
       '<a class="btn ghost" href="https://klpconsultingsvcs.org">Get the book</a>'+
     '</div>'+
     '<p class="fine" style="margin-top:14px;">Want to fix this across your whole leadership team? '+
-    '<a href="https://klpconsultingsvcs.org">Ask about the Enterprise Edition</a> — the 4-week playbook sprint, guided sessions, and implementation support.</p>'+
+    '<a href="https://klpconsultingsvcs.org">Ask about the Enterprise Edition</a>  -  the 4-week playbook sprint, guided sessions, and implementation support.</p>'+
     '<div class="center" style="margin-top:10px;"><button class="btn ghost" onclick="reset()">Retake</button></div>';
   window.scrollTo(0,0);
 }

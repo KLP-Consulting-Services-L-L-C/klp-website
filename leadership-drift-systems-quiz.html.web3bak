@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Which System Should You Install First? | Leadership Drift</title>
-<meta name="description" content="A 2-minute diagnostic from the book Leadership Drift by Kristen Peloquin. Find out which leadership trap is quietly draining your team  -  and the first move to fix it.">
+<meta name="description" content="A 2-minute diagnostic from the book Leadership Drift by Kristen Peloquin. Find out which leadership trap is quietly draining your team — and the first move to fix it.">
 <style>
   :root{
     --navy:#16283f; --navy2:#1f3a5c; --gold:#d9a441; --gold2:#b9862f;
@@ -73,7 +73,7 @@
 
 <script>
 /* ============================================================
-   QUIZ DATA  -  each statement maps to one of four Part II systems:
+   QUIZ DATA — each statement maps to one of four Part II systems:
    da (Decision Architecture) · al (Accountability Loop)
    cb (Capacity Blueprint) · roe (Rules of Engagement)
    ============================================================ */
@@ -135,7 +135,7 @@ function renderStart(){
   app.innerHTML =
     '<div class="kicker">Leadership Drift · 2-minute diagnostic</div>'+
     '<h1>Which system should you install first?</h1>'+
-    '<p class="sub">Leadership drift rarely announces itself as failure. Your team doesn\'t need another initiative. It needs an operating system. Rate 12 statements  -  how often each happens on your team  -  and find out which of the four Leadership Drift systems to install first, plus the first move to install it.</p>'+
+    '<p class="sub">Leadership drift rarely announces itself as failure. Your team doesn\'t need another initiative. It needs an operating system. Rate 12 statements — how often each happens on your team — and find out which of the four Leadership Drift systems to install first, plus the first move to install it.</p>'+
     '<p class="sub">Based on <em>Leadership Drift</em> by Kristen Peloquin.</p>'+
     '<div class="center" style="margin-top:8px;"><button class="btn" onclick="renderQ()">Start the diagnostic</button></div>';
 }
@@ -164,17 +164,17 @@ function topKey(){
 }
 
 function renderGate(){
-  /* EMAIL GATE  -  connect this form to your email provider (ConvertKit,
+  /* EMAIL GATE — connect this form to your email provider (ConvertKit,
      Mailchimp, etc.) or your site's form handler to capture leads.
      The result renders either way; the email is optional. */
   app.innerHTML =
     '<div class="progress"><div style="width:100%"></div></div>'+
     '<div class="kicker">Almost there</div>'+
     '<h2>Get your full system report</h2>'+
-    '<p class="sub">Enter your email and we\'ll send your result plus the free operating frameworks from the book  -  the Decision Architecture Matrix, the Priority Kill Switch, the 48-Hour Feedback Log, and the Seam Handoff Standard.</p>'+
+    '<p class="sub">Enter your email and we\'ll send your result plus the free operating frameworks from the book — the Decision Architecture Matrix, the Priority Kill Switch, the 48-Hour Feedback Log, and the Seam Handoff Standard.</p>'+
     '<input type="email" id="email" placeholder="you@company.com">'+
     '<div class="cta-row"><button class="btn" onclick="submitEmail()">Send my report</button>'+
-    '<button class="btn ghost" onclick="renderResult()">Skip  -  just show my result</button></div>'+
+    '<button class="btn ghost" onclick="renderResult()">Skip — just show my result</button></div>'+
     '<p class="fine" style="margin-top:12px;">No spam. Unsubscribe anytime.</p>';
 }
 function submitEmail(){
@@ -192,7 +192,7 @@ function submitEmail(){
       }));
     } catch(e) {}
 
-    if (typeof WEB3FORMS_ACCESS_KEY !== "undefined" && WEB3FORMS_ACCESS_KEY) {
+    if (typeof WEB3FORMS_ACCESS_KEY !== "undefined" && WEB3FORMS_ACCESS_KEY && WEB3FORMS_ACCESS_KEY !== "ee876766-2b71-4ab8-888b-6cb3f57d469d") {
       fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
@@ -236,7 +236,7 @@ function renderResult(){
       '<a class="btn ghost" href="https://klpconsultingsvcs.org">Bring this to your team</a>'+
     '</div>'+
     '<p class="fine" style="margin-top:14px;">Want to fix this across your whole leadership team? '+
-    '<a href="https://klpconsultingsvcs.org">Ask about the Enterprise Edition</a>  -  the 4-week playbook sprint, guided sessions, and implementation support.</p>'+
+    '<a href="https://klpconsultingsvcs.org">Ask about the Enterprise Edition</a> — the 4-week playbook sprint, guided sessions, and implementation support.</p>'+
     '<div class="center" style="margin-top:10px;"><button class="btn ghost" onclick="reset()">Retake</button></div>';
   window.scrollTo(0,0);
 }

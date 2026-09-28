@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Drift Diagnostic | What&rsquo;s Your Drift Risk Score? | Leadership Drift</title>
-  <meta name="description" content="Take the 2-minute Drift Diagnostic based on Leadership Drift by Kristen Peloquin. Calculate your team's Drift Risk Score (0–100), identify your biggest operational leak, and get your immediate First Move.">
+  <title>Executive Drift Diagnostic | What&rsquo;s Your Drift Risk Score? | Leadership Drift</title>
+  <meta name="description" content="Take the 2-minute executive diagnostic based on Leadership Drift by Kristen Peloquin. Calculate your team's Drift Risk Score (0–100), identify your biggest operational leak, and get your immediate First Move.">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css">
   <link rel="canonical" href="https://klpconsultingsvcs.org/diagnostic.html">
-  <meta property="og:title" content="Drift Diagnostic | Leadership Drift">
+  <meta property="og:title" content="Executive Drift Diagnostic | Leadership Drift">
   <meta property="og:description" content="Calculate your team's Drift Risk Score (0–100) and pinpoint your highest-friction operational leak in 2 minutes.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://klpconsultingsvcs.org/diagnostic.html">
@@ -317,310 +317,7 @@
       padding-top: 16px;
       border-top: 1px solid var(--slate-100);
     }
-  
-    /* LinkedIn Benchmark Badge & Executive Share Suite */
-    .linkedin-badge-container {
-      margin: 24px 0 28px 0;
-    }
-
-    .badge-privacy-note {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.8rem;
-      color: var(--slate-600);
-      margin-bottom: 12px;
-      background: var(--navy-50);
-      padding: 8px 14px;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--slate-200);
-      line-height: 1.4;
-    }
-
-    .badge-privacy-note svg {
-      flex-shrink: 0;
-      color: var(--navy-700);
-    }
-
-    .linkedin-badge-card {
-      background: linear-gradient(135deg, #0a1128 0%, #101d3b 50%, #162544 100%);
-      border: 1.5px solid var(--gold-400);
-      border-radius: var(--radius-md);
-      padding: 24px 22px;
-      color: #ffffff;
-      box-shadow: 0 12px 30px rgba(10, 17, 40, 0.25), 0 0 0 1px rgba(197, 155, 39, 0.2);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .linkedin-badge-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 18px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .linkedin-badge-crest {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #d4af37;
-    }
-
-    .linkedin-badge-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(34, 197, 94, 0.14);
-      border: 1px solid rgba(74, 222, 128, 0.35);
-      color: #4ade80;
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 99px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .linkedin-badge-body {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .linkedin-badge-seal-box {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(197, 155, 39, 0.45);
-      border-radius: 12px;
-      padding: 16px 14px;
-      text-align: center;
-      min-width: 120px;
-      flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .seal-icon-svg {
-      color: #d4af37;
-      margin-bottom: 6px;
-    }
-
-    .seal-tag-top {
-      font-size: 0.65rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #cbd5e1;
-    }
-
-    .seal-tag-year {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: #f59e0b;
-      line-height: 1.2;
-      font-family: 'Space Grotesk', sans-serif;
-    }
-
-    .seal-tag-sub {
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #94a3b8;
-    }
-
-    .linkedin-badge-info {
-      flex: 1;
-    }
-
-    .badge-info-eyebrow {
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: #d4af37;
-      margin-bottom: 4px;
-    }
-
-    .badge-archetype-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #ffffff;
-      line-height: 1.25;
-      font-family: 'Space Grotesk', sans-serif;
-      margin-bottom: 4px;
-    }
-
-    .badge-seam-desc {
-      font-size: 0.92rem;
-      color: #cbd5e1;
-      line-height: 1.4;
-      margin-bottom: 6px;
-    }
-
-    .badge-tool-tag {
-      font-size: 0.82rem;
-      color: #94a3b8;
-    }
-
-    .badge-tool-tag strong {
-      color: #f1f5f9;
-    }
-
-    .linkedin-badge-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 16px;
-      padding-top: 12px;
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
-      font-size: 0.75rem;
-      color: #94a3b8;
-    }
-
-    .badge-action-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 14px 0 10px 0;
-    }
-
-    .btn-share-li {
-      background: #0a66c2;
-      color: #ffffff !important;
-      font-weight: 700;
-      border: none;
-      border-radius: 8px;
-      padding: 10px 18px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      font-size: 0.88rem;
-      transition: background 0.15s ease;
-      text-decoration: none;
-    }
-    .btn-share-li:hover {
-      background: #004182;
-    }
-
-    .btn-download-badge {
-      background: #ffffff;
-      color: var(--navy-900) !important;
-      font-weight: 700;
-      border: 1.5px solid var(--slate-300);
-      border-radius: 8px;
-      padding: 10px 18px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      font-size: 0.88rem;
-      transition: all 0.15s ease;
-    }
-    .btn-download-badge:hover {
-      border-color: var(--gold-400);
-      background: #fdfbf7;
-    }
-
-    .btn-copy-post {
-      background: var(--navy-50);
-      color: var(--navy-900) !important;
-      font-weight: 600;
-      border: 1.5px solid var(--slate-300);
-      border-radius: 8px;
-      padding: 10px 16px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      font-size: 0.88rem;
-      transition: all 0.15s ease;
-    }
-    .btn-copy-post:hover {
-      background: #e2e8f0;
-    }
-
-    .badge-copy-toast {
-      background: #ecfdf5;
-      border: 1px solid #a7f3d0;
-      color: #065f46;
-      font-size: 0.85rem;
-      font-weight: 600;
-      padding: 10px 14px;
-      border-radius: 6px;
-      margin-top: 10px;
-    }
-
-    /* Colleague Share Module */
-    .colleague-share-box {
-      background: #ffffff;
-      border: 1.5px solid var(--slate-200);
-      border-radius: var(--radius-md);
-      padding: 20px 22px;
-      margin-top: 20px;
-      box-shadow: 0 4px 14px rgba(11, 19, 43, 0.04);
-    }
-
-    .colleague-share-header {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--navy-900);
-      margin-bottom: 6px;
-    }
-
-    .colleague-share-header svg {
-      color: var(--gold-500);
-    }
-
-    .colleague-share-text {
-      font-size: 0.88rem;
-      color: var(--slate-600);
-      margin-bottom: 14px;
-      line-height: 1.5;
-    }
-
-    .colleague-share-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    @media (max-width: 600px) {
-      .linkedin-badge-body {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 14px;
-      }
-      .linkedin-badge-seal-box {
-        width: 100%;
-        padding: 12px;
-      }
-      .linkedin-badge-footer {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
-      }
-      .badge-action-bar, .colleague-share-actions {
-        flex-direction: column;
-      }
-      .badge-action-bar button, .colleague-share-actions button, .colleague-share-actions a {
-        width: 100%;
-        justify-content: center;
-      }
-    }
-    </style>
+  </style>
 </head>
 <body>
 
@@ -662,7 +359,7 @@
   <section class="hero-dark">
     <div class="container text-center" style="max-width: 860px; margin: 0 auto; padding-bottom: 60px;">
       <div class="badge badge-dark-gold" style="margin-bottom: 14px;">
-        <span>INTERACTIVE DRIFT DIAGNOSTIC &bull; 2-MINUTE AUDIT</span>
+        <span>INTERACTIVE EXECUTIVE DIAGNOSTIC &bull; 2-MINUTE AUDIT</span>
       </div>
       <h1 style="color: #ffffff; margin-bottom: 14px; font-size: clamp(2.1rem, 4vw, 3.2rem); font-family: 'Space Grotesk', sans-serif;">
         What&rsquo;s Your Team&rsquo;s Drift Risk Score?
@@ -745,7 +442,7 @@
           <h4>Leadership Drift</h4>
           <ul class="footer-links">
             <li><a href="the-book.html">Book Overview &amp; Excerpt</a></li>
-            <li><a href="diagnostic.html">Drift Diagnostic</a></li>
+            <li><a href="diagnostic.html">Executive Drift Diagnostic</a></li>
             <li><a href="enterprise.html">Team &amp; Enterprise Resources</a></li>
             <li><a href="tools.html">Reader Portal</a></li>
             <li><a href="https://www.amazon.com/dp/B0HJ97QKZ3?maas=maas_adg_DF527B15C7198128F4DE2EFD978EE9AB_afap_abs&amp;ref_=aa_maas&amp;tag=maas" target="_blank">Order on Amazon</a></li>
@@ -951,7 +648,7 @@
 
     function renderStart() {
       app.innerHTML = `
-        <div class="diag-kicker">Interactive Drift Diagnostic &bull; 12 Questions</div>
+        <div class="diag-kicker">Executive Diagnostic &bull; 12 Questions</div>
         <h2 style="font-size: 1.85rem; color: var(--navy-900); margin-bottom: 12px; font-family: 'Space Grotesk', sans-serif;">
           Diagnose Your Team&rsquo;s Operational Health
         </h2>
@@ -991,184 +688,6 @@
       const shareUrl = "https://klpconsultingsvcs.org/diagnostic.html";
       const linkedInUrl = "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(shareUrl);
       window.open(linkedInUrl, "_blank", "width=600,height=550,resizable=yes,scrollbars=yes");
-    };
-
-    window.copyLinkedInPost = function() {
-      const url = "https://klpconsultingsvcs.org/diagnostic.html";
-      const postText = "I just took the Drift Diagnostic based on the concepts in Leadership Drift.\n\nThe biggest takeaway: organizational drag rarely arrives with an explosion. It creeps in through tiny, unaddressed compromises across seams, like blurred decision rights, untracked shadow work, and meetings to plan meetings.\n\nWhether you are an emerging leader or leading an established cross-functional team, this 2-minute diagnostic is an exceptional gut check on where your operational systems actually stand:\n" + url + "\n\n#Leadership #Operations #LeadershipDrift #EmergingLeaders #OrganizationalDesign";
-
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(postText).then(function() {
-          const el = document.getElementById("copySuccessMsg");
-          if (el) {
-            el.style.display = "block";
-            setTimeout(function() { el.style.display = "none"; }, 5000);
-          }
-        });
-      } else {
-        const ta = document.createElement("textarea");
-        ta.value = postText;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand("copy");
-        document.body.removeChild(ta);
-        const el = document.getElementById("copySuccessMsg");
-        if (el) {
-          el.style.display = "block";
-          setTimeout(function() { el.style.display = "none"; }, 5000);
-        }
-      }
-    };
-
-    window.copyDiagnosticLink = function() {
-      const url = "https://klpconsultingsvcs.org/diagnostic.html";
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(url).then(function() {
-          const el = document.getElementById("copyLinkSuccessMsg");
-          if (el) {
-            el.style.display = "block";
-            setTimeout(function() { el.style.display = "none"; }, 5000);
-          }
-        });
-      } else {
-        const ta = document.createElement("textarea");
-        ta.value = url;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand("copy");
-        document.body.removeChild(ta);
-        const el = document.getElementById("copyLinkSuccessMsg");
-        if (el) {
-          el.style.display = "block";
-          setTimeout(function() { el.style.display = "none"; }, 5000);
-        }
-      }
-    };
-
-    window.downloadBadgeImage = function() {
-      const canvas = document.createElement("canvas");
-      canvas.width = 1200;
-      canvas.height = 630;
-      const ctx = canvas.getContext("2d");
-      if (!ctx) return;
-
-      // Background Gradient
-      const bgGrad = ctx.createLinearGradient(0, 0, 1200, 630);
-      bgGrad.addColorStop(0, "#080e1e");
-      bgGrad.addColorStop(0.5, "#101d3b");
-      bgGrad.addColorStop(1, "#162544");
-      ctx.fillStyle = bgGrad;
-      ctx.fillRect(0, 0, 1200, 630);
-
-      // Gold Outer Border
-      ctx.strokeStyle = "#c59b27";
-      ctx.lineWidth = 4;
-      ctx.strokeRect(28, 28, 1144, 574);
-
-      // Inner Accent Border
-      ctx.strokeStyle = "rgba(197, 155, 39, 0.35)";
-      ctx.lineWidth = 1.5;
-      ctx.strokeRect(38, 38, 1124, 554);
-
-      // Header Eyebrow Left
-      ctx.fillStyle = "#d4af37";
-      ctx.font = "bold 20px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
-      ctx.fillText("LEADERSHIP DRIFT \u2022 DRIFT DIAGNOSTIC BENCHMARK", 60, 85);
-
-      // Verified Tag Right
-      ctx.textAlign = "right";
-      ctx.fillStyle = "#4ade80";
-      ctx.font = "bold 18px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
-      ctx.fillText("\u2713 VERIFIED AUDIT \u2022 2026", 1140, 85);
-
-      // Header Divider Line
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.15)";
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(60, 110);
-      ctx.lineTo(1140, 110);
-      ctx.stroke();
-
-      // Seal Plaque Box (Left)
-      ctx.textAlign = "center";
-      ctx.fillStyle = "rgba(255, 255, 255, 0.05)";
-      ctx.fillRect(60, 145, 250, 360);
-      ctx.strokeStyle = "rgba(197, 155, 39, 0.5)";
-      ctx.lineWidth = 2;
-      ctx.strokeRect(60, 145, 250, 360);
-
-      // Seal Shield Text
-      ctx.fillStyle = "#d4af37";
-      ctx.font = "bold 22px 'Space Grotesk', -apple-system, sans-serif";
-      ctx.fillText("OPERATIONAL", 185, 230);
-      ctx.fillText("ALIGNMENT", 185, 260);
-
-      ctx.fillStyle = "#f59e0b";
-      ctx.font = "bold 56px 'Space Grotesk', -apple-system, sans-serif";
-      ctx.fillText("2026", 185, 335);
-
-      ctx.fillStyle = "#4ade80";
-      ctx.font = "bold 16px -apple-system, sans-serif";
-      ctx.fillText("\u2713 AUDIT COMPLETED", 185, 395);
-
-      ctx.fillStyle = "#94a3b8";
-      ctx.font = "14px -apple-system, sans-serif";
-      ctx.fillText("DRIFT BENCHMARK", 185, 435);
-
-      // Benchmark Details (Right)
-      ctx.textAlign = "left";
-
-      // Eyebrow
-      ctx.fillStyle = "#d4af37";
-      ctx.font = "bold 18px -apple-system, sans-serif";
-      ctx.fillText("OPERATIONAL SYSTEMS BENCHMARK", 350, 190);
-
-      // Title
-      ctx.fillStyle = "#ffffff";
-      ctx.font = "bold 42px 'Space Grotesk', -apple-system, sans-serif";
-      ctx.fillText("OPERATIONAL SYSTEMS AUDIT", 350, 250);
-
-      // Subtitle
-      ctx.fillStyle = "#cbd5e1";
-      ctx.font = "24px -apple-system, sans-serif";
-      ctx.fillText("Proactive assessment of decision rights, capacity, and seam integrity.", 350, 300);
-
-      // Framework Tag
-      ctx.fillStyle = "#94a3b8";
-      ctx.font = "20px -apple-system, sans-serif";
-      ctx.fillText("Framework based on the concepts in Leadership Drift", 350, 355);
-
-      // Second Tagline Note
-      ctx.fillStyle = "#64748b";
-      ctx.font = "italic 18px -apple-system, sans-serif";
-      ctx.fillText("Auditing organizational friction before seams impact customer execution.", 350, 400);
-
-      // Bottom Divider
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.15)";
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(60, 530);
-      ctx.lineTo(1140, 530);
-      ctx.stroke();
-
-      // Footer Left
-      ctx.fillStyle = "#94a3b8";
-      ctx.font = "18px -apple-system, sans-serif";
-      ctx.fillText("Validated by KLP Consulting Services \u2022 Author: Kristen Peloquin", 60, 575);
-
-      // Footer Right
-      ctx.textAlign = "right";
-      ctx.fillStyle = "#d4af37";
-      ctx.font = "bold 20px -apple-system, sans-serif";
-      ctx.fillText("klpconsultingsvcs.org/diagnostic.html", 1140, 575);
-
-      // Trigger Download
-      const a = document.createElement("a");
-      a.download = "leadership-drift-diagnostic-benchmark.png";
-      a.href = canvas.toDataURL("image/png");
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
     };
 
     window.startDiagnostic = function() {
@@ -1431,122 +950,16 @@
       });
 
       const isAnchored = (score <= 25);
-      state.lastResult = { score: score, band: band, leakKey: leakKey, A: A, isAnchored: isAnchored };
 
       app.innerHTML = `
         <div class="score-circle-wrapper">
           <div class="score-display-number">${score}<span>/100</span></div>
           <div><span class="risk-badge ${band.badgeClass}">${band.tag} &bull; ${band.name}</span></div>
-        </div>
-
-        <!-- OFFICIAL LINKEDIN BENCHMARK BADGE & SHARING SUITE -->
-        <div class="linkedin-badge-container">
-          <div class="badge-privacy-note">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-            </svg>
-            <span><strong>Privacy Notice:</strong> Your numerical friction score and specific answers are private to you. This credential and post caption only verify that you completed the operational systems audit.</span>
-          </div>
-
-          <div class="linkedin-badge-card" id="linkedinBenchmarkBadge">
-            <div class="linkedin-badge-header">
-              <div class="linkedin-badge-crest">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/>
-                  <polyline points="9 12 11 14 15 10"/>
-                </svg>
-                <span>Leadership Drift &bull; Drift Diagnostic Benchmark</span>
-              </div>
-              <div class="linkedin-badge-pill">
-                <span style="display:inline-block; width:6px; height:6px; background:#4ade80; border-radius:50%;"></span>
-                Verified Audit
-              </div>
-            </div>
-
-            <div class="linkedin-badge-body">
-              <div class="linkedin-badge-seal-box">
-                <svg class="seal-icon-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/>
-                  <polyline points="9 12 11 14 15 10"/>
-                </svg>
-                <div class="seal-tag-top">Audit</div>
-                <div class="seal-tag-year">2026</div>
-                <div class="seal-tag-sub">Completed</div>
-              </div>
-              <div class="linkedin-badge-info">
-                <div class="badge-info-eyebrow">Drift Diagnostic Benchmark</div>
-                <div class="badge-archetype-title">Operational Systems Audit</div>
-                <div class="badge-seam-desc">
-                  Proactive audit of cross-functional seams, decision ownership, and frontline capacity boundaries.
-                </div>
-                <div class="badge-tool-tag">
-                  Framework based on the concepts in <em>Leadership Drift</em>
-                </div>
-              </div>
-            </div>
-
-            <div class="linkedin-badge-footer">
-              <div>Validated by KLP Consulting Services &bull; Kristen Peloquin</div>
-              <div style="color: #d4af37; font-weight: 600;">klpconsultingsvcs.org</div>
-            </div>
-          </div>
-
-          <!-- Sharing Action Controls -->
-          <div class="badge-action-bar">
-            <button type="button" class="btn-share-li" onclick="window.shareOnLinkedIn()">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.6 1.6 0 0 0-1.6 1.6 1.6 1.6 0 0 0 1.6 1.6 1.6 1.6 0 0 0 1.6-1.6 1.6 1.6 0 0 0-1.6-1.6Z"/>
-              </svg>
-              Share on LinkedIn
+          <div style="margin-top: 14px;">
+            <button type="button" class="btn btn-outline btn-sm" onclick="window.shareOnLinkedIn()" style="border-color: #0a66c2; color: #0a66c2; font-weight: 600; padding: 6px 16px; display: inline-flex; align-items: center; gap: 6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.6 1.6 0 0 0-1.6 1.6 1.6 1.6 0 0 0 1.6 1.6 1.6 1.6 0 0 0 1.6-1.6 1.6 1.6 0 0 0-1.6-1.6Z"/></svg>
+              Share Score on LinkedIn
             </button>
-            <button type="button" class="btn-download-badge" onclick="window.downloadBadgeImage()">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                <polyline points="7 10 12 15 17 10"/>
-                <line x1="12" y1="15" x2="12" y2="3"/>
-              </svg>
-              Download Badge (PNG)
-            </button>
-            <button type="button" class="btn-copy-post" onclick="window.copyLinkedInPost()">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-              </svg>
-              Copy Post Caption
-            </button>
-          </div>
-          <div id="copySuccessMsg" class="badge-copy-toast" style="display: none;">
-            &check; Post caption copied to clipboard. Ready to paste directly into your LinkedIn post.
-          </div>
-
-          <!-- Share with a Colleague Card -->
-          <div class="colleague-share-box">
-            <div class="colleague-share-header">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                <circle cx="9" cy="7" r="4"/>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-              </svg>
-              <span>Know a colleague who would find this helpful?</span>
-            </div>
-            <p class="colleague-share-text">
-              Send this 2-minute diagnostic to a fellow leader or peer department head to start an objective conversation about seams and capacity.
-            </p>
-            <div class="colleague-share-actions">
-              <button type="button" class="btn btn-outline btn-sm" onclick="window.copyDiagnosticLink()" style="font-weight: 600; padding: 7px 16px; display: inline-flex; align-items: center; gap: 6px;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-                Copy Assessment Link
-              </button>
-              <a href="mailto:?subject=Helpful%202-Minute%20Drift%20Diagnostic&body=Hi%2C%0A%0AI%20just%20took%20this%20quick%20Drift%20Diagnostic%20based%20on%20the%20concepts%20in%20Leadership%20Drift.%20It%20helps%20pinpoint%20operational%20friction%20across%20decision%20rights%20and%20team%20capacity%20in%20about%202%20minutes.%0A%0AThought%20you%20might%20find%20it%20interesting%20for%20your%20team%3A%0Ahttps%3A%2F%2Fklpconsultingsvcs.org%2Fdiagnostic.html" class="btn btn-outline btn-sm" style="font-weight: 600; padding: 7px 16px; display: inline-flex; align-items: center; gap: 6px; text-decoration: none; border-color: var(--navy-700); color: var(--navy-900);">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                Email to a Colleague
-              </a>
-            </div>
-            <div id="copyLinkSuccessMsg" class="badge-copy-toast" style="display: none; margin-top: 10px;">
-              &check; Assessment link copied to clipboard.
-            </div>
           </div>
         </div>
 
@@ -1625,15 +1038,12 @@
                 : `Turn to <strong>${A.chapters}</strong> in <em>Leadership Drift</em> to install the <strong>${A.tool}</strong>, establish unambiguous decision boundaries, and eliminate untracked operational drag before it burns out top talent.`}
             </p>
             <div class="cta-button-group" style="margin-top: 0;">
-              <a href="https://a.co/d/01zgwPxE" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="box-shadow: 0 4px 14px rgba(197, 155, 39, 0.4); font-weight: 700; padding: 12px 22px;">
-                Order Paperback ($19.99) &bull; Prime &rarr;
+              <a href="https://a.co/d/01zgwPxE" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="box-shadow: 0 4px 14px rgba(197, 155, 39, 0.4); font-weight: 700; padding: 12px 24px;">
+                Order on Amazon ($19.99) &bull; Prime &rarr;
               </a>
               <a href="https://a.co/d/01zgwPxE" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="border-color: var(--navy-800); color: var(--navy-900); font-weight: 600; padding: 12px 20px;">
-                Order on Kindle ($9.99 &bull; Free on KU) &rarr;
+                Kindle &bull; Free on KU
               </a>
-            </div>
-            <div style="font-size: 0.85rem; color: var(--slate-600); margin-top: 10px;">
-              Available on Amazon in Paperback ($19.99) and Kindle eBook ($9.99 &bull; Free with Kindle Unlimited).
             </div>
           </div>
 
