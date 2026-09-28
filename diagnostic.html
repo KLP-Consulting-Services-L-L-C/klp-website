@@ -1281,17 +1281,14 @@
           </div>
         </div>
 
-        <div class="cta-button-group">
-          <button class="btn btn-primary btn-lg" style="box-shadow: 0 4px 18px rgba(197, 155, 39, 0.35);" onclick="window.submitGate()">
+        <div style="margin-top: 10px;">
+          <button class="btn btn-primary btn-lg" style="width: 100%; box-shadow: 0 4px 18px rgba(197, 155, 39, 0.35); font-weight: 700; padding: 14px 28px;" onclick="window.submitGate()">
             Reveal My Official Results &rarr;
-          </button>
-          <button class="btn btn-outline btn-lg" onclick="window.renderResults()">
-            Skip &bull; Just View Result
           </button>
         </div>
 
-        <p style="font-size: 0.82rem; color: var(--slate-400); margin-top: 18px;">
-          Your information is held in strict professional confidence. No spam. Unsubscribe anytime.
+        <p style="font-size: 0.82rem; color: var(--slate-500); line-height: 1.5; margin-top: 16px; text-align: center;">
+          By submitting, you agree to receive your diagnostic results, the companion PDF tool, and occasional operational insights from Kristen Peloquin. You can unsubscribe anytime in 1 click. View our <a href="privacy.html" target="_blank" style="color: var(--navy-800); text-decoration: underline;">Privacy Policy</a>.
         </p>
       `;
 
@@ -1302,8 +1299,8 @@
       const nameVal = (document.getElementById("diag-name")?.value || "").trim();
       const emailVal = (document.getElementById("diag-email")?.value || "").trim();
 
-      if (emailVal && emailVal.indexOf("@") < 1) {
-        alert("Please enter a valid email address to receive your report.");
+      if (!emailVal || emailVal.indexOf("@") < 1) {
+        alert("Please enter a valid work email address to reveal your results and receive your companion operating tool.");
         return;
       }
 
