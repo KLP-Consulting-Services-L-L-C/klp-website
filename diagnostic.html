@@ -1272,127 +1272,152 @@
       return best;
     }
 
-    function renderGate() {
-      app.innerHTML = `
-        <div class="diag-progress-bar">
-          <div class="diag-progress-fill" style="width: 100%;"></div>
-        </div>
-        <div class="badge badge-gold" style="margin-bottom: 12px;">Diagnostic Complete</div>
-        <h2 style="font-size: 1.85rem; color: var(--navy-900); margin-bottom: 10px; font-family: 'Space Grotesk', sans-serif;">
-          Your Drift Report Is Ready
-        </h2>
-        <p style="color: var(--slate-700); font-size: 1.05rem; line-height: 1.6; margin-bottom: 24px;">
-          Enter your details below to save your official Drift Risk Score and receive the companion operating tools referenced in <em>Leadership Drift</em>.
-        </p>
+function renderGate() {
+  app.innerHTML = `
+    <div class="diag-progress-bar">
+      <div class="diag-progress-fill" style="width: 100%;"></div>
+    </div>
 
-        <div style="background: var(--navy-50); border: 1px solid var(--slate-200); border-radius: var(--radius-md); padding: 22px; margin-bottom: 24px;">
-          <div style="margin-bottom: 16px;">
-            <label style="display: block; font-size: 0.88rem; font-weight: 700; color: var(--navy-900); margin-bottom: 6px;">Your Name</label>
-            <input type="text" id="diag-name" class="form-control" placeholder="e.g. Kristen Peloquin" style="width: 100%; padding: 12px 14px; border: 1px solid var(--slate-200); border-radius: var(--radius-sm); font-size: 1rem;">
-          </div>
-          <div>
-            <label style="display: block; font-size: 0.88rem; font-weight: 700; color: var(--navy-900); margin-bottom: 6px;">Work Email Address</label>
-            <input type="email" id="diag-email" class="form-control" placeholder="you@company.com" style="width: 100%; padding: 12px 14px; border: 1px solid var(--slate-200); border-radius: var(--radius-sm); font-size: 1rem;">
-          </div>
-        </div>
+    <div class="badge badge-gold" style="margin-bottom: 12px;">Diagnostic Complete</div>
 
-        <div style="margin-top: 10px;">
-          <button class="btn btn-primary btn-lg" style="width: 100%; box-shadow: 0 4px 18px rgba(197, 155, 39, 0.35); font-weight: 700; padding: 14px 28px;" onclick="window.submitGate()">
-            Reveal My Official Results &rarr;
-          </button>
-        </div>
+    <h2 style="font-size: 1.85rem; color: var(--navy-900); margin-bottom: 10px; font-family: 'Space Grotesk', sans-serif;">
+      Your Drift Report Is Ready
+    </h2>
 
-        <p style="font-size: 0.82rem; color: var(--slate-500); line-height: 1.5; margin-top: 16px; text-align: center;">
-          By submitting, you agree to receive your diagnostic results, the companion PDF tool, and occasional operational insights from Kristen Peloquin. You can unsubscribe anytime in 1 click. View our <a href="privacy.html" target="_blank" style="color: var(--navy-800); text-decoration: underline;">Privacy Policy</a>.
-        </p>
-      `;
+    <p style="color: var(--slate-700); font-size: 1.05rem; line-height: 1.6; margin-bottom: 24px;">
+      Enter your email if you'd like me to send you your results and the companion operating tools referenced in <em>Leadership Drift</em>.
+    </p>
 
-      app.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    <div style="background: var(--navy-50); border: 1px solid var(--slate-200); border-radius: var(--radius-md); padding: 22px; margin-bottom: 18px;">
+
+      <div style="margin-bottom: 16px;">
+        <label style="display: block; font-size: 0.88rem; font-weight: 700; color: var(--navy-900); margin-bottom: 6px;">
+          Your Name <span style="font-weight: 400; color: var(--slate-500);">(optional)</span>
+        </label>
+        <input type="text" id="diag-name" class="form-control" placeholder="e.g. Kristen Peloquin"
+          style="width: 100%; padding: 12px 14px; border: 1px solid var(--slate-200); border-radius: var(--radius-sm); font-size: 1rem;">
+      </div>
+
+      <div>
+        <label style="display: block; font-size: 0.88rem; font-weight: 700; color: var(--navy-900); margin-bottom: 6px;">
+          Work Email Address
+        </label>
+        <input type="email" id="diag-email" class="form-control" placeholder="you@company.com"
+          style="width: 100%; padding: 12px 14px; border: 1px solid var(--slate-200); border-radius: var(--radius-sm); font-size: 1rem;">
+      </div>
+    </div>
+
+    <button class="btn btn-primary btn-lg"
+      style="width: 100%; box-shadow: 0 4px 18px rgba(197, 155, 39, 0.35); font-weight: 700; padding: 14px 28px;"
+      onclick="window.submitGate()">
+      Send My Results &amp; Show My Report &rarr;
+    </button>
+
+    <div style="text-align: center; margin-top: 14px;">
+      <button onclick="window.skipGate()"
+        style="background: none; border: none; color: var(--slate-500); font-size: 0.82rem; cursor: pointer; text-decoration: underline;">
+        Skip and view my results
+      </button>
+    </div>
+
+    <p style="font-size: 0.78rem; color: var(--slate-500); line-height: 1.5; margin-top: 16px; text-align: center;">
+      If you provide your email, you'll receive your diagnostic results, companion tools, and occasional operational insights from Kristen Peloquin. You can unsubscribe anytime.
+      View our <a href="privacy.html" target="_blank" style="color: var(--navy-800); text-decoration: underline;">Privacy Policy</a>.
+    </p>
+  `;
+
+  app.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+window.submitGate = function() {
+  const nameVal = (document.getElementById("diag-name")?.value || "").trim();
+  const emailVal = (document.getElementById("diag-email")?.value || "").trim();
+
+  if (!emailVal || emailVal.indexOf("@") < 1) {
+    alert("Please enter a valid email address, or choose 'Skip and view my results.'");
+    return;
+  }
+
+  state.name = nameVal;
+  state.email = emailVal;
+
+  const S = state.scores;
+  const rawTotal = S.rescuer + S.avoider + S.overloader + S.silo;
+  const score = Math.round((rawTotal / 36) * 100);
+  const leakKey = topKey();
+  const A = ARCHETYPES[leakKey];
+
+  let band = BANDS[3];
+  for (let i = 0; i < BANDS.length; i++) {
+    if (score <= BANDS[i].max) {
+      band = BANDS[i];
+      break;
     }
+  }
 
-    window.submitGate = function() {
-      const nameVal = (document.getElementById("diag-name")?.value || "").trim();
-      const emailVal = (document.getElementById("diag-email")?.value || "").trim();
+  try {
+    localStorage.setItem("klp_diagnostic_lead_email", emailVal);
+    localStorage.setItem("klp_diagnostic_lead_name", nameVal);
+    localStorage.setItem("klp_diagnostic_last_score", JSON.stringify({
+      date: new Date().toISOString(),
+      scores: state.scores,
+      email: emailVal,
+      name: nameVal,
+      score: score,
+      band: band.name,
+      archetype: (A.name || "Drift Pattern")
+    }));
+  } catch(e) {}
 
-      if (!emailVal || emailVal.indexOf("@") < 1) {
-        alert("Please enter a valid work email address to reveal your results and receive your companion operating tool.");
-        return;
-      }
+  if (typeof WEB3FORMS_ACCESS_KEY !== "undefined" && WEB3FORMS_ACCESS_KEY) {
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: `New Drift Risk Lead: ${nameVal || 'Leader'} scored ${score}/100 (${(A.name || "Drift Pattern")})`,
+        from_name: "Leadership Drift Diagnostic",
+        name: nameVal || "Anonymous Leader",
+        email: emailVal,
+        drift_risk_score: `${score}/100 - ${band.name} (${band.tag})`,
+        primary_friction_archetype: (A.name || "Drift Pattern"),
+        estimated_operational_drag: A.cost,
+        recommended_first_move: A.move,
+        relevant_framework: (A.tool || "Operating Framework"),
+        book_chapters: A.chapters,
+        score_breakdown: `Rescue: ${S.rescuer}/9 | Avoidance: ${S.avoider}/9 | Overload: ${S.overloader}/9 | Silo: ${S.silo}/9`,
+        submitted_at: new Date().toLocaleString()
+      })
+    }).catch(function(err) {
+      console.warn("Lead email notification failed:", err);
+    });
+  }
 
-      state.name = nameVal;
-      state.email = emailVal;
+  if (typeof window.trackEvent === 'function') {
+    window.trackEvent('diagnostic_lead_captured', {
+      email: emailVal,
+      name: nameVal,
+      score: score,
+      archetype: (A.name || "Drift Pattern")
+    });
+  }
 
-      if (emailVal) {
-        const S = state.scores;
-        const rawTotal = S.rescuer + S.avoider + S.overloader + S.silo;
-        const score = Math.round((rawTotal / 36) * 100);
-        const leakKey = topKey();
-        const A = ARCHETYPES[leakKey];
+  window.renderResults();
+};
 
-        let band = BANDS[3];
-        for (let i = 0; i < BANDS.length; i++) {
-          if (score <= BANDS[i].max) {
-            band = BANDS[i];
-            break;
-          }
-        }
+window.skipGate = function() {
+  state.name = "";
+  state.email = "";
 
-        // Save lead securely to local storage as fallback
-        try {
-          localStorage.setItem("klp_diagnostic_lead_email", emailVal);
-          localStorage.setItem("klp_diagnostic_lead_name", nameVal);
-          localStorage.setItem("klp_diagnostic_last_score", JSON.stringify({
-            date: new Date().toISOString(),
-            scores: state.scores,
-            email: emailVal,
-            name: nameVal,
-            score: score,
-            band: band.name,
-            archetype: (A.name || "Drift Pattern")
-          }));
-        } catch(e) {}
+  if (typeof window.trackEvent === 'function') {
+    window.trackEvent('diagnostic_email_skipped', {});
+  }
 
-        // Send instant lead email notification via Web3Forms endpoint
-        if (typeof WEB3FORMS_ACCESS_KEY !== "undefined" && WEB3FORMS_ACCESS_KEY) {
-          fetch("https://api.web3forms.com/submit", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "Accept": "application/json"
-            },
-            body: JSON.stringify({
-              access_key: WEB3FORMS_ACCESS_KEY,
-              subject: `New Drift Risk Lead: ${nameVal || 'Leader'} scored ${score}/100 (${(A.name || "Drift Pattern")})`,
-              from_name: "Leadership Drift Diagnostic",
-              name: nameVal || "Anonymous Leader",
-              email: emailVal,
-              drift_risk_score: `${score}/100 - ${band.name} (${band.tag})`,
-              primary_friction_archetype: (A.name || "Drift Pattern"),
-              estimated_operational_drag: A.cost,
-              recommended_first_move: A.move,
-              relevant_framework: (A.tool || "Operating Framework"),
-              book_chapters: A.chapters,
-              score_breakdown: `Rescue: ${S.rescuer}/9 | Avoidance: ${S.avoider}/9 | Overload: ${S.overloader}/9 | Silo: ${S.silo}/9`,
-              submitted_at: new Date().toLocaleString()
-            })
-          }).catch(function(err) {
-            console.warn("Lead email notification failed:", err);
-          });
-        }
-
-        // Fire analytics tracking event
-        if (typeof window.trackEvent === 'function') {
-          window.trackEvent('diagnostic_lead_captured', {
-            email: emailVal,
-            name: nameVal,
-            score: score,
-            archetype: (A.name || "Drift Pattern")
-          });
-        }
-      }
-
-      window.renderResults();
-    };
+  window.renderResults();
+};
 
     window.renderResults = function() {
       const S = state.scores;
