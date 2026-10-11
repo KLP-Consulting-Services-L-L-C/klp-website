@@ -177,14 +177,32 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. Client-Side Measurement & Event Tracking
   // =========================================================================
   function trackEvent(eventName, eventParams = {}) {
-    // Log to console for debugging/audit
-    console.log(`[KLP Analytics] ${eventName}:`, eventParams);
+    const allowedParams = [
+      'score',
+      'band',
+      'leak_system',
+      'archetype',
+      'edition',
+      'target_url',
+      'button_text',
+      'source_page',
+      'file_name'
+    ];
 
-    // Send to Google Analytics 4 if initialized
+    const safeParams = {};
+
+    allowedParams.forEach((key) => {
+      if (eventParams[key] !== undefined) {
+        safeParams[key] = eventParams[key];
+      }
+    });
+
     if (typeof window.gtag === 'function') {
-      window.gtag('event', eventName, eventParams);
+      window.gtag('event', eventName, safeParams);
     }
   }
+
+  window.trackEvent = trackEvent;
 
   // Track Amazon Book Purchase Clicks
   document.querySelectorAll('a[href*="amazon.com"]').forEach((link) => {
